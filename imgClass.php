@@ -6,7 +6,7 @@ class Img{
 		$nom = substr($nom,0,-4);
 		// On récupère les dimensions de l'image
 		$dimension=getimagesize($img);
-		// On cré une image à partir du fichier récup
+		// On cré une image à partir du fichier récupéré
 		if(substr(strtolower($img),-4)==".jpg"){$image = imagecreatefromjpeg($img); }
 		else if(substr(strtolower($img),-4)==".png"){$image = imagecreatefrompng($img); }
 		else if(substr(strtolower($img),-4)==".gif"){$image = imagecreatefromgif($img); }

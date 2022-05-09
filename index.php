@@ -2,7 +2,7 @@
     if(!empty($_FILES)){
         require_once("imgClass.php");//J'importe la class image de Grafikart
         print_r($_FILES['img']);
-        $img=$_FILES['img'];//Stoquer dans img les images uploadés via la méthode http post
+        $img=$_FILES['img'];//Stoquer dans img les images uploadées via la méthode http post
         $incoming_format=strtolower(substr($img['name'], -3));//transforme en minuscule l'extension des fichiers récupérée grace à la méthode substr
         $allowed_format=array("jpeg","jpg","png","gif");//Lister dans un tableau les formats d'images acceptés
         echo "'extension du fichier entrant '.$incoming_format";
@@ -30,11 +30,10 @@
 </head>
 <body>
     <header>
-        <h1>Galerie-upload images <a href="https://www.youtube.com/watch?v=UDYOlFgtF0o"> Grafikart</a></h1>
-        <a href="../" target="_self" rel="noopener noreferrer">Retour au sommaire</a>
+        <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
     <section class="tutorial">
-        <h2>Upload image</h2>
+        <h2>Gestion images sources</h2>
     </section>
     <article>
         <?php
@@ -43,6 +42,7 @@
         }
         ?>
         <form method="post" action="index.php" enctype ="multipart/form-data">
+            Ajouter une image
             <input class="file" type="file" name="img"/>
             <input class="submit" type="submit" name="Upload">
         </form>
@@ -59,14 +59,13 @@
                  <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                       <img src="images/min/<?php echo $file; ?>"/>
                 </a>
-                <h3><?php echo $file; ?></h3>
             </div>
             <?php
+                }
             }
-        }
-        ?>
+            ?>
         </section>
-        <p>Tutoriel terminé, le code est commenté. Améliorer l'esthétique. Ajout de zoombox.</p>
+        <p>Tutoriel terminé, le code est commenté. Améliorer l'esthétique.</p>
     </article>
 </body>
 </html>
