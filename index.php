@@ -43,33 +43,35 @@
         ?>
         <form method="post" action="index.php" enctype ="multipart/form-data">
             Ajouter une image
-            <input class="file" type="file" name="img"/>
+            <input class="addFile" type="file" name="img"/>
             <input class="submit" type="submit" name="Upload">
         </form>
-        <section class="gallery">
-        <?php 
-        $dos="images/min";//Donner le chemin des miniatures
-        $dir=opendir($dos);//Ouvrir le répertoire des miniatures
-        while($file=readdir($dir)){//Pour chacune des images du dossier
-            $imageName=substr($file,0,-4);
-            $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
-            $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
-            if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
-             ?>
-             <div class="min">
-                 <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
-                      <img src="images/min/<?php echo $file; ?>"/>
-                </a>
-                <form action="traitement.php" method="post">
-                    <input type="radio" id="<?php  echo $imageName ?>" name="defaultTaquin" value="The good one" checked>
-                    <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
-                    <input type="button" value="-">
-                </form>
-            </div>
-            <?php
+        <section >
+            <form class="gallery" action="traitement.php" method="post">
+            <?php 
+            $dos="images/min";//Donner le chemin des miniatures
+            $dir=opendir($dos);//Ouvrir le répertoire des miniatures
+            while($file=readdir($dir)){//Pour chacune des images du dossier
+                $imageName=substr($file,0,-4);
+                $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
+                $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
+                if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
+                ?>
+                <div class="min">
+                    <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
+                        <img src="images/min/<?php echo $file; ?>"/>
+                    </a>
+                    <div class="selectaRadio">
+                        <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
+                        <input type="radio" id="<?php  echo $imageName ?>" name="defaultTaquin" value="The good one" checked>
+                    </div>
+                    <button><img src="css/images/deleteButton.png" alt=""></button>
+                </div>
+                <?php
+                    }
                 }
-            }
-            ?>
+                ?>
+            </form>
         </section>
         <p>Transform in CRUD,
             <ul>

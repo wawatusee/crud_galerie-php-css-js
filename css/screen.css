@@ -1,5 +1,4 @@
 /*HEADER*/
-/*Titres grafikart*/
 body{
     background-color: grey;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -11,7 +10,6 @@ h1{
     background-color: black;
 }
 h2{
-
     font-size: 1.7143em; /* equiv 24px */
     background-color: rgb(87, 82, 78);
     text-align: left;
@@ -30,17 +28,7 @@ h1>a,header>a{
     color: pink;
 }
 /*MAIN*/
-/*Formulaire*/
-form{
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items:center;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-.file, .submit{
+.addFile, .submit{
     padding:5px;
     background-color: pink;
     color: black;
@@ -60,7 +48,17 @@ gap: 10px;
 .min{
     background-color: white;
     max-width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
 }
-.min>h3{
-    visibility: hidden;
+.selectaRadio{
+    background-color:rgb(87, 82, 78);color: white ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.deleteButton{
+    justify-content: space-around;
 }
