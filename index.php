@@ -51,6 +51,7 @@
         $dos="images/min";//Donner le chemin des miniatures
         $dir=opendir($dos);//Ouvrir le répertoire des miniatures
         while($file=readdir($dir)){//Pour chacune des images du dossier
+            $imageName=substr($file,0,-4);
             $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
             $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
             if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
@@ -59,6 +60,10 @@
                  <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                       <img src="images/min/<?php echo $file; ?>"/>
                 </a>
+                <form action="traitement.php" method="post">
+                    The good one
+                    <input type="checkbox" name="defaultTaquin" id="<?php  echo $imageName ?> name="allFiles">
+                </form>
             </div>
             <?php
                 }
