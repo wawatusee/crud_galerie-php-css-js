@@ -61,8 +61,9 @@
                       <img src="images/min/<?php echo $file; ?>"/>
                 </a>
                 <form action="traitement.php" method="post">
-                    The good one
-                    <input type="checkbox" name="defaultTaquin" id="<?php  echo $imageName ?> name="allFiles">
+                    <input type="radio" id="<?php  echo $imageName ?>" name="defaultTaquin" value="The good one" checked>
+                    <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
+                    <input type="button" value="-">
                 </form>
             </div>
             <?php
@@ -70,7 +71,14 @@
             }
             ?>
         </section>
-        <p>Tutoriel terminé, le code est commenté. Améliorer l'esthétique.</p>
+        <p>Transform in CRUD,
+            <ul>
+                <li> uploader file(ok)</li>
+                <li>delete file</li>
+                <li>select file</li>
+                <li>rename file</li>
+            </ul>
+        </p>
     </article>
 </body>
 </html>
