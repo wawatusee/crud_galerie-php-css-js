@@ -26,6 +26,7 @@ $nameSelected=substr($selectedImage,0,-4);
 <head>
     <script type="text/javascript" src="zoombox/jquery.js"></script>
     <script type="text/javascript" src="zoombox/zoombox.js"></script> 
+    <script type="text/javasript" src="js/gallery.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
