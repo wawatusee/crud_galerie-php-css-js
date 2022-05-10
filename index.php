@@ -1,4 +1,9 @@
 <?php 
+//Import du fichier json source
+$jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
+//Récupération du nom de l'image source
+$selectedImage=$jsonImageTaquin->image_taquin;
+$nameSelected=substr($selectedImage,0,-4);
     if(!empty($_FILES)){
         require_once("imgClass.php");//J'importe la class image de Grafikart
         print_r($_FILES['img']);
@@ -17,7 +22,7 @@
     }
 ?>
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <script type="text/javascript" src="zoombox/jquery.js"></script>
     <script type="text/javascript" src="zoombox/zoombox.js"></script> 
@@ -47,7 +52,7 @@
             <input class="submit" type="submit" name="Upload">
         </form>
         <section >
-            <form class="gallery" action="traitement.php" method="post">
+            <form class="gallery" action=" " method="GET">
             <?php 
             $dos="images/min";//Donner le chemin des miniatures
             $dir=opendir($dos);//Ouvrir le répertoire des miniatures
@@ -63,7 +68,7 @@
                     </a>
                     <div class="selectaRadio">
                         <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
-                        <input type="radio" id="<?php  echo $imageName ?>" name="defaultTaquin" value="The good one" checked>
+                        <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
                     </div>
                     <button><img src="css/images/deleteButton.png" alt=""></button>
                 </div>
@@ -80,6 +85,8 @@
                 <li>select file</li>
                 <li>rename file</li>
             </ul>
+            Done : Design perfect
+            ToDo : Rooter PHP pour comportement delete and select. 
         </p>
     </article>
 </body>
