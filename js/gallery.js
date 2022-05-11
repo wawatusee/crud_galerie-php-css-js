@@ -10,8 +10,6 @@ return radioButton[0].value;
 function onSelect(evt){
     var imageSelected=evt.target.value;
     console.log(imageSelected);
-    let toSend= '"traitementSelection.php?fileName='+imageSelected+'"';
+    //let toSend= '"traitementSelection.php?fileName='+imageSelected+'"';
     window.location="traitementSelection.php?fileName="+imageSelected;
-    //window.location="https://google.fr?q=lapin"
-    console.log(toSend);
 }
