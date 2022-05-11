@@ -26,11 +26,11 @@ $nameSelected=substr($selectedImage,0,-4);
 <head>
     <script type="text/javascript" src="zoombox/jquery.js"></script>
     <script type="text/javascript" src="zoombox/zoombox.js"></script> 
-    <script type="text/javasript" src="js/gallery.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>upload-images_grafikart</title>
+    <title>Crud images-selection unique</title>
     <link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
     <link href="zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
@@ -38,7 +38,7 @@ $nameSelected=substr($selectedImage,0,-4);
     <header>
         <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
-    <section class="tutorial">
+    <section>
         <h2>Gestion images sources</h2>
     </section>
     <article>
@@ -79,7 +79,7 @@ $nameSelected=substr($selectedImage,0,-4);
                 ?>
             </form>
         </section>
-        <p>Transform in CRUD,
+        <p>Transform in CRUD
             <ul>
                 <li> uploader file(ok)</li>
                 <li>delete file</li>
@@ -90,5 +90,6 @@ $nameSelected=substr($selectedImage,0,-4);
             ToDo : Rooter PHP pour comportement delete and select. 
         </p>
     </article>
+    <script type="text/javascript" src="js/gallery.js"></script>
 </body>
 </html>
