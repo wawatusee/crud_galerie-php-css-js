@@ -3,6 +3,9 @@
 $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
 //Récupération du nom de l'image source
 $selectedImage=$jsonImageTaquin->image_taquin;
+?>
+<?php
+//Traitement upload image,création thumb et image plein format 
 $nameSelected=substr($selectedImage,0,-4);
     if(!empty($_FILES)){
         require_once("imgClass.php");//J'importe la class image de Grafikart
@@ -26,7 +29,6 @@ $nameSelected=substr($selectedImage,0,-4);
 <head>
     <script type="text/javascript" src="zoombox/jquery.js"></script>
     <script type="text/javascript" src="zoombox/zoombox.js"></script> 
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,12 +49,15 @@ $nameSelected=substr($selectedImage,0,-4);
             echo $erreur;
         }
         ?>
+<!--Upload Form-->
         <form method="post" action="index.php" enctype ="multipart/form-data">
             Ajouter une image
             <input class="addFile" type="file" name="img"/>
             <input class="submit" type="submit" name="Upload">
         </form>
+<!--Upload Form_end-->
         <section >
+<!--Gallery with Button radio Form for each-->
             <form class="gallery" action=" " method="GET">
             <?php 
             $dos="images/min";//Donner le chemin des miniatures
@@ -78,6 +83,7 @@ $nameSelected=substr($selectedImage,0,-4);
                 }
                 ?>
             </form>
+<!--Gallery with Button radio Form for each_end-->
         </section>
         <p>Transform in CRUD
             <ul>
