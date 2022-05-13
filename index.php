@@ -40,56 +40,57 @@ $nameSelected=substr($selectedImage,0,-4);
     <header>
         <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
-    <section>
-        <h2>Gestion images sources</h2>
-    </section>
     <article>
-        <?php
-        if(isset($erreur)){
-            echo $erreur;
-        }
-        ?>
-<!--Upload Form-->
-        <form method="post" action="index.php" enctype ="multipart/form-data">
-            <fieldset>
-                <legend>Ajouter une image</legend>
-                <input class="addFile" type="file" name="img"/>
-                <input class="submit" type="submit" name="Upload">
-            </fieldset>
-        </form>
-<!--Upload Form_end-->
-        <section >
-<!--Gallery with Button radio Form for each-->
-            <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
-            <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
-            <form class="gallery" action=" " method="GET">
-            <?php 
-            $dos="images/min";//Donner le chemin des miniatures
-            $dir=opendir($dos);//Ouvrir le répertoire des miniatures
-            while($file=readdir($dir)){//Pour chacune des images du dossier
-                $imageName=substr($file,0,-4);
-                $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
-                $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
-                if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
-                ?>
-                <figure class="min">
-                    <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
-                        <img src="images/min/<?php echo $file; ?>"/>
-                    </a>
-                    <div class="titleFigcaption">
-                        <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
-                        <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
-                    </div>
-                    <button><img src="css/images/deleteButton.png" alt=""></button>
-                </figure>
-                <?php
-                    }
-                }
-                ?>
+        <h2>Gestion fichiers sources</h2>
+        <section>
+            <?php
+            if(isset($erreur)){
+                echo $erreur;
+            }
+            ?>
+    <!--Upload Form-->
+            <form method="post" action="index.php" enctype ="multipart/form-data">
+                <fieldset>
+                    <legend>Ajouter une image</legend>
+                    <input class="addFile" type="file" name="img"/>
+                    <input class="submit" type="submit" name="Upload">
+                </fieldset>
             </form>
-<!--Gallery with Button radio Form for each_end-->
-        </section>
-        <p>Transform in CRUD
+    <!--Upload Form_end-->
+            </section>
+            <section >
+    <!--Gallery with Button radio Form for each-->
+                <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
+                <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
+                <form class="gallery" action=" " method="GET">
+                <?php 
+                $dos="images/min";//Donner le chemin des miniatures
+                $dir=opendir($dos);//Ouvrir le répertoire des miniatures
+                while($file=readdir($dir)){//Pour chacune des images du dossier
+                    $imageName=substr($file,0,-4);
+                    $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
+                    $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
+                    if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
+                    ?>
+                    <figure class="min">
+                        <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
+                            <img src="images/min/<?php echo $file; ?>"/>
+                        </a>
+                        <div class="titleFigcaption">
+                            <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
+                            <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+                        </div>
+                        <button><img src="css/images/deleteButton.png" alt=""></button>
+                    </figure>
+                    <?php
+                        }
+                    }
+                    ?>
+                </form>
+    <!--Gallery with Button radio Form for each_end-->
+            </section>
+    </article>
+    <p>Transform in CRUD
             <ul>
                 <li> uploader file(ok)</li>
                 <li>delete file</li>
@@ -99,7 +100,6 @@ $nameSelected=substr($selectedImage,0,-4);
             Done : Design perfect
             ToDo : Rooter PHP pour comportement delete and select. 
         </p>
-    </article>
     <script type="text/javascript" src="js/gallery.js"></script>
 </body>
 </html>

@@ -14,6 +14,11 @@ if (isset($_GET["fileName"])){
     echo "pas passé le GET";
 }
 ?>
+<?php
+if(isset($_POST['newFileSelected'])){
+    var_dump ($_POST['newFileSelected']);
+} else echo "aucun fichier remplacé";
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -26,32 +31,32 @@ if (isset($_GET["fileName"])){
 <header>
     <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
-    <section>
+    <article>
         <h2>Validation fichier sélectionné</h2>
-    </section>
-    <section class="gallery">
-        <figure class="min">
-            <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
-            <figcaption><div class="titleFigcaption">Fichier actuel :</div><div></div><?php echo $selectedImage; ?></div></figcaption>
-        </figure>
-        <figure class="min">
-            <img src="images/min/<?php echo $newFileSelected; ?>"/>
-            <figcaption><div class="titleFigcaption">Fichier selectionné :</div><div><?php echo $newFileSelected; ?></div></figcaption>
-        </figure>
-    </section>
-    <code><?php var_dump($jsonImageTaquin); ?></code>
-    <?php
-    function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
-        $jsonImageTaquin->image_taquin=$content;
-    }
-    ?>
-    <form action="" method="POST">
-        <fieldset>
-        <legend>Voulez vous remplacer?</legend>
-        <label type="text" name="selectedImage" value="<?php echo $selectedImage; ?>"><?php echo $selectedImage; ?></label><br>
-        <label type="text" name="newFileSelected" value="<?php echo $newFileSelected; ?>">par <?php echo $newFileSelected; ?></label>
-        <button type="submit">Remplacer</button>
-        </fieldset>
-    </form>
+        <section class="gallery">
+            <figure class="min">
+                <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
+                <figcaption><div class="titleFigcaption">Fichier actuel :</div><div></div><?php echo $selectedImage; ?></div></figcaption>
+            </figure>
+            <figure class="min">
+                <img src="images/min/<?php echo $newFileSelected; ?>"/>
+                <figcaption><div class="titleFigcaption">Fichier selectionné :</div><div><?php echo $newFileSelected; ?></div></figcaption>
+            </figure>
+        </section>
+        <code><?php var_dump($jsonImageTaquin); ?></code>
+        <?php
+        function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
+            $jsonImageTaquin->image_taquin=$content;
+        }
+        ?>
+        <form action="" method="POST">
+            <fieldset>
+            <legend>Voulez vous remplacer?</legend>
+            <label type="text" name="selectedImage" value="<?php echo $selectedImage; ?>"><?php echo $selectedImage; ?></label><br>
+            <label type="text" name="newFileSelected" value="<?php echo $newFileSelected; ?>">par <?php echo $newFileSelected; ?></label>
+            <button type="submit">Remplacer</button>
+            </fieldset>
+        </form>
+    </article>
 </body>
 </html>
