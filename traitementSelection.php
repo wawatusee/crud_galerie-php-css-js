@@ -33,11 +33,11 @@ if (isset($_GET["fileName"])){
             <img src="images/min/<?php echo $newFileSelected; ?>"/>
             <figcaption><?php echo $newFileSelected; ?></figcaption>
         </div>
-        <div class="min">
-            <h3>Image Taquin actuelle</h3>
+        <figure class="min">
+            <h3></h3>
             <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
-            <figcaption><?php echo $selectedImage; ?></figcaption>
-        </div>
+            <figcaption>Image Taquin actuelle :<?php echo $selectedImage; ?></figcaption>
+        </figure>
     </section>
     <pre></pre>
     <code><?php var_dump($jsonImageTaquin); ?></code>
