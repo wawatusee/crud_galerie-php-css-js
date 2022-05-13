@@ -52,8 +52,9 @@ flex-wrap: wrap;
     justify-content: space-around;
 
 }
-.selectaRadio{
-    background-color:rgb(87, 82, 78);color: white ;
+.titleFigcaption{
+    background-color:rgb(87, 82, 78);
+    color: white;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;

@@ -51,13 +51,17 @@ $nameSelected=substr($selectedImage,0,-4);
         ?>
 <!--Upload Form-->
         <form method="post" action="index.php" enctype ="multipart/form-data">
-            Ajouter une image
-            <input class="addFile" type="file" name="img"/>
-            <input class="submit" type="submit" name="Upload">
+            <fieldset>
+                <legend>Ajouter une image</legend>
+                <input class="addFile" type="file" name="img"/>
+                <input class="submit" type="submit" name="Upload">
+            </fieldset>
         </form>
 <!--Upload Form_end-->
         <section >
 <!--Gallery with Button radio Form for each-->
+            <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
+            <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
             <form class="gallery" action=" " method="GET">
             <?php 
             $dos="images/min";//Donner le chemin des miniatures
@@ -72,7 +76,7 @@ $nameSelected=substr($selectedImage,0,-4);
                     <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                         <img src="images/min/<?php echo $file; ?>"/>
                     </a>
-                    <div class="selectaRadio">
+                    <div class="titleFigcaption">
                         <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
                         <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
                     </div>

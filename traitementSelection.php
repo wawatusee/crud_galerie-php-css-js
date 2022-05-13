@@ -5,7 +5,9 @@ $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
 $selectedImage=$jsonImageTaquin->image_taquin;
 ?>
 <!DOCTYPE html>
+<!--Traitement des données entrantes-->
 <?php
+//Si GET est reçu, le nom du fichier sélectionnée est stoqué 
 if (isset($_GET["fileName"])){
     $newFileSelected=$_GET["fileName"];
 }else{
@@ -25,27 +27,31 @@ if (isset($_GET["fileName"])){
     <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
     <section>
-        <h2>Validation image sélectionnée</h2>
+        <h2>Validation fichier sélectionné</h2>
     </section>
     <section class="gallery">
-        <div class="min">
-            <h3>Image selectionnée</h3>
-            <img src="images/min/<?php echo $newFileSelected; ?>"/>
-            <figcaption><?php echo $newFileSelected; ?></figcaption>
-        </div>
         <figure class="min">
-            <h3></h3>
             <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
-            <figcaption>Image Taquin actuelle :<?php echo $selectedImage; ?></figcaption>
+            <figcaption><div class="titleFigcaption">Fichier actuel :</div><div></div><?php echo $selectedImage; ?></div></figcaption>
+        </figure>
+        <figure class="min">
+            <img src="images/min/<?php echo $newFileSelected; ?>"/>
+            <figcaption><div class="titleFigcaption">Fichier selectionné :</div><div><?php echo $newFileSelected; ?></div></figcaption>
         </figure>
     </section>
-    <pre></pre>
     <code><?php var_dump($jsonImageTaquin); ?></code>
     <?php
     function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
         $jsonImageTaquin->image_taquin=$content;
-        
-    } 
+    }
     ?>
+    <form action="" method="POST">
+        <fieldset>
+        <legend>Voulez vous remplacer?</legend>
+        <label type="text" name="selectedImage" value="<?php echo $selectedImage; ?>"><?php echo $selectedImage; ?></label><br>
+        <label type="text" name="newFileSelected" value="<?php echo $newFileSelected; ?>">par <?php echo $newFileSelected; ?></label>
+        <button type="submit">Remplacer</button>
+        </fieldset>
+    </form>
 </body>
 </html>
