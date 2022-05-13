@@ -82,10 +82,10 @@ if(isset($_POST)){
                 <li>Cibler clé valeur nom fichier</li>
                 <li>GET réception objet sélectionné</li>
                 <li>Affichage de l'objet en cours et du nouvel objet sélectionné</li>
+                <li>Construire formulaire</li>
             </ul> , 
             <h2>ToDo :</h2>
             <ul>
-                <li>Construire formulaire</li>
                 <li>Traitement conditionnel du formulaire</li>
                 <li>Modifier clé valeur</li>
                 <li>Updater json en ligne</li>
