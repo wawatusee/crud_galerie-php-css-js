@@ -14,9 +14,17 @@ if (isset($_GET["fileName"])){
     echo "pas passé le GET";
 }
 ?>
+<code>
+    <?php
+    echo "Depuis json extérieur:";
+    var_dump($jsonImageTaquin);
+    ?>
+ </code>
+
 <?php
 /////TODO//////
 if(isset($_POST)){
+    echo "Reçu depuis POST:";
     var_dump ($_POST);
 } else echo "aucun fichier remplacé";
 ?>
@@ -41,11 +49,14 @@ if(isset($_POST)){
             </figure>
             <figure class="min">
                 <img src="images/min/<?php echo $newFileSelected; ?>"/>
-                <figcaption><div class="titleFigcaption">Fichier selectionné :</div><div><?php echo $newFileSelected; ?></div></figcaption>
+                <figcaption>
+                    <div class="titleFigcaption">Fichier selectionné :</div>
+                    <div><?php echo $newFileSelected; ?></div>
+                </figcaption>
             </figure>
         </section>
-        <code><?php var_dump($jsonImageTaquin); ?></code>
         <?php
+        //EN cours
         function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
             $jsonImageTaquin->image_taquin=$content;
         }
