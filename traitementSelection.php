@@ -65,8 +65,10 @@ if(isset($_POST)){
         <form action="" method="POST">
             <fieldset>
             <legend>Voulez vous remplacer?</legend>
-            <label type="text" name="selectedImage" value="<?php echo $selectedImage; ?>"><?php echo $selectedImage; ?></label><br>
-            <label type="text" name="newFileSelected" value="<?php echo $newFileSelected; ?>">par <?php echo $newFileSelected; ?></label>
+            <textarea name="selectedImage" id=""><?php echo $selectedImage; ?></textarea>
+            Par
+            <textarea name="newFileSelected" id=""><?php echo $newFileSelected; ?></textarea>
+            
             <button type="submit">Remplacer</button>
             </fieldset>
         </form>
