@@ -15,8 +15,9 @@ if (isset($_GET["fileName"])){
 }
 ?>
 <?php
-if(isset($_POST['newFileSelected'])){
-    var_dump ($_POST['newFileSelected']);
+/////TODO//////
+if(isset($_POST)){
+    var_dump ($_POST);
 } else echo "aucun fichier remplacé";
 ?>
 <html lang="en">
@@ -49,6 +50,7 @@ if(isset($_POST['newFileSelected'])){
             $jsonImageTaquin->image_taquin=$content;
         }
         ?>
+    <!--//////////TODO////////-->
         <form action="" method="POST">
             <fieldset>
             <legend>Voulez vous remplacer?</legend>
@@ -58,5 +60,24 @@ if(isset($_POST['newFileSelected'])){
             </fieldset>
         </form>
     </article>
+    <fieldset><legend>README</legend>
+        <p>Interface crud
+            <H2>Done :</H2>
+            <ul><li>Design perfect</li>
+                <li>Charger Json</li>
+                <li>Récupération objet en cours</li>
+                <li>Cibler clé valeur nom fichier</li>
+                <li>GET réception objet sélectionné</li>
+                <li>Affichage de l'objet en cours et du nouvel objet sélectionné</li>
+            </ul> , 
+            <h2>ToDo :</h2>
+            <ul>
+                <li>Construire formulaire</li>
+                <li>Traitement conditionnel du formulaire</li>
+                <li>Modifier clé valeur</li>
+                <li>Updater json en ligne</li>
+            </ul>
+        </p>
+    </fieldset>
 </body>
 </html>
