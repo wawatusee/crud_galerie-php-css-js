@@ -59,18 +59,17 @@ if(isset($_POST['newFileSelected'])){
         //EN cours
         function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
             $jsonImageTaquin->image_taquin=$content;
-
+            
         }
         ?>
     <!--Formulaire de validation de nouvelle image-->
         <form action="" method="POST">
-            <fieldset>
-            <legend>Voulez vous remplacer?</legend>
-            <textarea name="selectedImage" id=""><?php echo $selectedImage; ?></textarea>
-            Par
-            <textarea name="newFileSelected" id=""><?php echo $newFileSelected; ?></textarea>
-            
-            <button type="submit">Remplacer</button>
+                <fieldset>
+                <legend>Voulez vous remplacer?</legend>
+                <textarea name="selectedImage" id=""><?php echo $selectedImage; ?></textarea>
+                Par
+                <textarea name="newFileSelected" id=""><?php echo $newFileSelected; ?></textarea>
+                <button type="submit">Remplacer</button>
             </fieldset>
         </form>
     </article>
