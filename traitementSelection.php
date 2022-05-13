@@ -35,9 +35,17 @@ if (isset($_GET["fileName"])){
         </div>
         <div class="min">
             <h3>Image Taquin actuelle</h3>
-            <img src="images/min/<?php echo $selectedImage; ?>"/>
+            <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
             <figcaption><?php echo $selectedImage; ?></figcaption>
         </div>
     </section>
+    <pre></pre>
+    <code><?php var_dump($jsonImageTaquin); ?></code>
+    <?php
+    function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
+        $jsonImageTaquin->image_taquin=$content;
+        
+    } 
+    ?>
 </body>
 </html>

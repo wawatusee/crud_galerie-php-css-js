@@ -68,7 +68,7 @@ $nameSelected=substr($selectedImage,0,-4);
                 $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
                 if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
                 ?>
-                <div class="min">
+                <figure class="min">
                     <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                         <img src="images/min/<?php echo $file; ?>"/>
                     </a>
@@ -77,7 +77,7 @@ $nameSelected=substr($selectedImage,0,-4);
                         <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
                     </div>
                     <button><img src="css/images/deleteButton.png" alt=""></button>
-                </div>
+                </figure>
                 <?php
                     }
                 }
