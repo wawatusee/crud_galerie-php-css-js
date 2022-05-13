@@ -90,16 +90,23 @@ $nameSelected=substr($selectedImage,0,-4);
     <!--Gallery with Button radio Form for each_end-->
             </section>
     </article>
-    <p>Transform in CRUD
-            <ul>
+    <fieldset>
+        <legend>README</legend>
+        <p>Transform in CRUD
+            <ul>Done :
+                <li>Design perfect</li>
+            </ul>
+             
+            <ul>ToDo :
                 <li> uploader file(ok)</li>
                 <li>delete file</li>
                 <li>select file</li>
                 <li>rename file</li>
+                <li>Création de test pour chaque action</li>
+                <li>Rooter PHP pour comportement delete and select. </li>
             </ul>
-            Done : Design perfect
-            ToDo : Rooter PHP pour comportement delete and select. 
         </p>
+    </fieldset>
     <script type="text/javascript" src="js/gallery.js"></script>
 </body>
 </html>

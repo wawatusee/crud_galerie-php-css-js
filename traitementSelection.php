@@ -23,9 +23,9 @@ if (isset($_GET["fileName"])){
 
 <?php
 /////TODO//////
-if(isset($_POST)){
+if(isset($_POST['newFileSelected'])){
     echo "Reçu depuis POST:";
-    var_dump ($_POST);
+    var_dump ($_POST['newFileSelected']);
 } else echo "aucun fichier remplacé";
 ?>
 <html lang="en">
@@ -59,9 +59,10 @@ if(isset($_POST)){
         //EN cours
         function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
             $jsonImageTaquin->image_taquin=$content;
+
         }
         ?>
-    <!--//////////TODO////////-->
+    <!--Formulaire de validation de nouvelle image-->
         <form action="" method="POST">
             <fieldset>
             <legend>Voulez vous remplacer?</legend>
@@ -89,6 +90,7 @@ if(isset($_POST)){
                 <li>Traitement conditionnel du formulaire</li>
                 <li>Modifier clé valeur</li>
                 <li>Updater json en ligne</li>
+                <li>Création de test pour chaque action</li>
             </ul>
         </p>
     </fieldset>
