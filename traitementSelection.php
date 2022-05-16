@@ -20,12 +20,21 @@ if (isset($_GET["fileName"])){
     var_dump($jsonImageTaquin);
     ?>
  </code>
-
 <?php
-/////TODO//////
+//Modification fichier enregistré
 if(isset($_POST['newFileSelected'])){
     echo "Reçu depuis POST:";
     var_dump ($_POST['newFileSelected']);
+    /////TODO//////Remplacer dans le json la valeur de image_taquin, sauvegarder dans js/image-taquin.json
+    //Remplacer dans le json la valeur de image_taquin
+    $jsonImageTaquin->image_taquin=$newFileSelected;
+    //sauvegarder dans js/image-taquin.json
+    //Le 3eme parametre devrait être rempli, peut-être avec lock-ex pour s'assurer qu'un seul administrateur change le fichier JSON
+    //On aimerait un retour de cette action pour pouvoir passer à autre chose.
+    $contentToSend=json_encode($jsonImageTaquin);
+    file_put_contents("js/image-taquin.json",$contentToSend);
+    echo "C'est quoi que tu veux sauvegarder dans le JSON?";
+    echo "T'es sérieux? Ca? :".$contentToSend;
 } else echo "aucun fichier remplacé";
 ?>
 <html lang="en">
@@ -38,7 +47,7 @@ if(isset($_POST['newFileSelected'])){
 </head>
 <body>
 <header>
-    <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
+    <h1>Page administration</h1><a href="taquin.php" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
     <article>
         <h2>Validation fichier sélectionné</h2>
@@ -83,13 +92,13 @@ if(isset($_POST['newFileSelected'])){
                 <li>GET réception objet sélectionné</li>
                 <li>Affichage de l'objet en cours et du nouvel objet sélectionné</li>
                 <li>Construire formulaire</li>
-            </ul> , 
-            <h2>ToDo :</h2>
-            <ul>
                 <li>Traitement conditionnel du formulaire</li>
                 <li>Modifier clé valeur</li>
                 <li>Updater json en ligne</li>
-                <li>Création de test pour chaque action</li>
+            </ul> , 
+            <h2>ToDo :</h2>
+            <ul>
+                <li>Création de TESTS pour chaque action</li>
             </ul>
         </p>
     </fieldset>

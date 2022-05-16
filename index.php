@@ -1,8 +1,18 @@
 <?php 
+$dos="images/min";//Donner le chemin des miniatures
+$dir=opendir($dos);//Ouvrir le répertoire des miniatures
+?>
+<?php 
 //Import du fichier json source
 $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
 //Récupération du nom de l'image source
-$selectedImage=$jsonImageTaquin->image_taquin;
+if(!isset($jsonImageTaquin)){
+    $selectedImage="_mg_4586.jpg";
+    echo "Par défaut : mg_4586.jpg";
+}else {$selectedImage=$jsonImageTaquin->image_taquin;
+    echo "on a été pécho dans ce contenu de json: ";
+    var_dump($jsonImageTaquin);
+}
 ?>
 <?php
 //Traitement upload image,création thumb et image plein format 
@@ -38,7 +48,7 @@ $nameSelected=substr($selectedImage,0,-4);
 </head>
 <body>
     <header>
-        <h1>Page administration</h1><a href="../" target="_self" rel="noopener noreferrer">Retour Page principale</a>
+        <h1>Page administration</h1><a href="taquin.php" target="_self" rel="noopener noreferrer">Retour Page principale</a>
     </header>
     <article>
         <h2>Gestion fichiers sources</h2>
@@ -64,8 +74,6 @@ $nameSelected=substr($selectedImage,0,-4);
                 <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
                 <form class="gallery" action=" " method="GET">
                 <?php 
-                $dos="images/min";//Donner le chemin des miniatures
-                $dir=opendir($dos);//Ouvrir le répertoire des miniatures
                 while($file=readdir($dir)){//Pour chacune des images du dossier
                     $imageName=substr($file,0,-4);
                     $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
@@ -95,13 +103,14 @@ $nameSelected=substr($selectedImage,0,-4);
         <p>Transform in CRUD
             <ul>Done :
                 <li>Design perfect</li>
+                <li> uploader file</li>
+                <li>select file</li>
             </ul>
              
             <ul>ToDo :
-                <li> uploader file(ok)</li>
                 <li>delete file</li>
-                <li>select file</li>
                 <li>rename file</li>
+                <li>Factoriser le traitement et filtre des images, utilisé en ouverture de script et dans la boucle qui met en place le comportrement.</li>
                 <li>Création de test pour chaque action</li>
                 <li>Rooter PHP pour comportement delete and select. </li>
             </ul>
