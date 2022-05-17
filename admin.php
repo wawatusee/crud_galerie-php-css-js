@@ -27,9 +27,9 @@ $nameSelected=substr($selectedImage,0,-4);
         $allowed_format=array("jpeg","jpg","png","gif");//Lister dans un tableau les formats d'images acceptés
         echo "'extension du fichier entrant '.$incoming_format";
         if(in_array($incoming_format,$allowed_format)){//Si le format de l'image fait partie des formats tolérés 
-        move_uploaded_file($img['tmp_name'],"images/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
-        Img::creerMin("images/".$img['name'],"images/min",$img['name'],215,112);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
-        img::convertirJPG("images/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
+        move_uploaded_file($img['tmp_name'],$dos."/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
+        Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],215,112);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
+        img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
         }
         else {
             echo "Ce fichier n'est pas au format accepté.";//Sinon on prévient le client que le format de l'image n'était pas bon
@@ -61,7 +61,7 @@ $nameSelected=substr($selectedImage,0,-4);
             }
             ?>
     <!--Upload Form-->
-            <form method="post" action="index.php" enctype ="multipart/form-data">
+            <form method="post" action="" enctype ="multipart/form-data">
                 <fieldset>
                     <legend>Ajouter une image</legend>
                     <input class="addFile" type="file" name="img"/>
