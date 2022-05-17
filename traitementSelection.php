@@ -10,6 +10,7 @@ $selectedImage=$jsonImageTaquin->image_taquin;
 //Si GET est reçu, le nom du fichier sélectionnée est stoqué 
 if (isset($_GET["fileName"])){
     $newFileSelected=$_GET["fileName"];
+    echo "Passé le GET";
 }else{
     echo "pas passé le GET";
 }
