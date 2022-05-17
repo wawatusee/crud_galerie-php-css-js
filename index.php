@@ -1,5 +1,5 @@
 <?php 
-//Rapatrier les infos nécessaires, ex: $dirImages
+//Rapatrier les infos nécessaires, ex: $dirImages,$sizeTaquin
 require_once "config.php";
 //Import du fichier json source
 $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
@@ -16,7 +16,10 @@ $urlImage=$dirImages.$nomImage;
     <link rel="stylesheet" href="css/taquin.css">
     <title>Taquin</title>
     <!--Déclaration de la variable qui sera employée pour l'arrière plan de chaque pièce. Attention au slash ajouté avant le nom du dossier-->
-    <style>:root{--image-taquin:url('<?php echo "/".$urlImage ?>');}</style>
+    <style>:root{--image-taquin:url('<?php echo "/".$urlImage ?>');
+                --totalLargeur:<?php echo $sizeTaquin?>;
+            }
+    </style>
 </head>
 <body onload="taquin()">
     <div class="c1">

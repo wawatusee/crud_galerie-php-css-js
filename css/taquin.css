@@ -1,16 +1,17 @@
 /*TAQUIN*/
 .taquin {
-    width: 400px;
+    width: var(--totalLargeur);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 .piece {
-    width: 100px;
+    --largeurPiece:calc(var(--totalLargeur)/4);
+    width:var(--largeurPiece);
     height: 100px;
     background: var(--image-taquin);
     background-color: aqua;
-    /*border-radius: 10px 10px 10px 10px;*/
+    border-radius: 10px 10px 10px 10px;
     font-size: 3em;
     text-align: center;
 }
