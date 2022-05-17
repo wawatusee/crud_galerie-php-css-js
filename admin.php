@@ -1,6 +1,8 @@
-<?php 
-$dos="images/min";//Donner le chemin des miniatures
-$dir=opendir($dos);//Ouvrir le répertoire des miniatures
+<?php
+//Donner le chemin des miniatures
+require "config.php";
+$dos=$dirImages;
+$dir=opendir($dos."min/");//Ouvrir le répertoire des miniatures
 ?>
 <?php 
 //Import du fichier json source

@@ -15,7 +15,8 @@ $urlImage=$dirImages.$nomImage;
     <!--<script type="text/javascript" src="js/init.js"></script>-->
     <link rel="stylesheet" href="css/taquin.css">
     <title>Taquin</title>
-    <style>:root{--image-taquin:url('<?php echo $urlImage ?>');}</style>
+    <!--Déclaration de la variable qui sera employée pour l'arrière plan de chaque pièce. Attention au slash ajouté avant le nom du dossier-->
+    <style>:root{--image-taquin:url('<?php echo "/".$urlImage ?>');}</style>
 </head>
 <body onload="taquin()">
     <div class="c1">

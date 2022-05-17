@@ -1,1 +1,1 @@
-<?php $dirImages="../images/";?>
+<?php $dirImages="images/";?>
