@@ -47,7 +47,7 @@ if(isset($_POST['newFileSelected'])){
 </head>
 <body>
 <header>
-    <h1>Page administration</h1><a href="taquin.php" target="_self" rel="noopener noreferrer">Retour Page principale</a>
+    <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Retour Page publique</a>
     </header>
     <article>
         <h2>Validation fichier sélectionné</h2>
