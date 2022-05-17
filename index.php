@@ -18,6 +18,7 @@ $urlImage=$dirImages.$nomImage;
     <!--Déclaration de la variable qui sera employée pour l'arrière plan de chaque pièce. Attention au slash ajouté avant le nom du dossier-->
     <style>:root{--image-taquin:url('<?php echo "/".$urlImage ?>');
                 --totalLargeur:<?php echo $sizeTaquin?>;
+                --ratioImage:1;
             }
     </style>
 </head>

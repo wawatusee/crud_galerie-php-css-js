@@ -8,7 +8,7 @@
 .piece {
     --largeurPiece:calc(var(--totalLargeur)/4);
     width:var(--largeurPiece);
-    height: 100px;
+    height: calc(var(--largeurPiece)*var(--ratioImage));
     background: var(--image-taquin);
     background-color: aqua;
     border-radius: 10px 10px 10px 10px;
