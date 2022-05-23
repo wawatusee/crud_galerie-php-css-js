@@ -29,6 +29,12 @@ function getNomImage(){
     var nomImageTaquin=jsonImageTaquin.textContent;
     return nomImageTaquin;
 }
+function getImageRatio(image){
+    let largeurImage=image.naturalWidth;
+    let hauteurImage=image.naturalHeight;
+    let ratio=largeurImage/hauteurImage;
+    return ratio;
+}
 function joue(evt) {
     //var nouvelleOrdrePieceCliquee=ordrePieceInvisible;
     var sonStyle = getComputedStyle(evt.target);

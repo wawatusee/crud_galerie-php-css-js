@@ -3,6 +3,8 @@
 require "config.php";
 $dos=$dirImages;
 $dir=opendir($dos."min/");//Ouvrir le répertoire des miniatures
+$largeurMiniature=200;
+$largeurImageTaquin=400;
 ?>
 <?php 
 //Import du fichier json source
@@ -30,20 +32,14 @@ $nameSelected=substr($selectedImage,0,-4);
          //Récupérer le tableau de tailles de l'image
         $dimensionImage=getimagesize($img['tmp_name']);
         $ratio=$dimensionImage[0]/$dimensionImage[1];
+        $hauteurMiniature=$largeurMiniature/$ratio;
+        $hauteurImageTaquin=$largeurImageTaquin/$ratio;
+        echo "Largeur: ".$dimensionImage[0].",Hauteur image :".$dimensionImage[1].",Ratio image : ".$ratio;
  //Tentative désespérée de créer miniature sans la classe de Grafikart
-        var_dump($dimensionImage);
-        echo "Largeur Image :".$dimensionImage[0];
-        echo "Hauteur image :".$dimensionImage[1];
-        echo " Ratio Image :".$ratio;
-        echo "Type d'image :".$img['type'];
-        if($img['type']==="image/jpeg"){
-            echo "lapin";
-        }
-        
-
         move_uploaded_file($img['tmp_name'],$dos."/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
-        Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],215,112);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
-        img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
+        Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],$largeurMiniature,$hauteurMiniature);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
+        Img::creerMin("images/".$img['name'],$dos."/",$img['name'],$largeurImageTaquin,$hauteurImageTaquin);//Avec une méthode de la classe image de Grafikart créer une l'image du taquin stoquée dans le répertoire désiré 
+        //img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
         }
         else {
             echo "Ce fichier n'est pas au format accepté.";//Sinon on prévient le client que le format de l'image n'était pas bon

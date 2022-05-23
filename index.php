@@ -15,10 +15,15 @@ $urlImage=$dirImages.$nomImage;
     <!--<script type="text/javascript" src="js/init.js"></script>-->
     <link rel="stylesheet" href="css/taquin.css">
     <title>Taquin</title>
+    <?php $dimensionsImage=getimagesize($urlImage);
+            $largeurImage=$dimensionsImage[0];
+            $hauteurImage=$dimensionsImage[1];
+            $ratioImage=$hauteurImage/$largeurImage;
+    ?>
     <!--Déclaration de la variable qui sera employée pour l'arrière plan de chaque pièce. Attention au slash ajouté avant le nom du dossier-->
     <style>:root{--image-taquin:url('<?php echo "/".$urlImage ?>');
                 --totalLargeur:<?php echo $sizeTaquin?>;
-                --ratioImage:1;
+                --ratioImage:<?php echo $ratioImage ?>;
             }
     </style>
 </head>
@@ -26,6 +31,7 @@ $urlImage=$dirImages.$nomImage;
     <div class="c1">
         <header>
             <h1>Raymond Taquin</h1>
+            <?php echo "ratio".$ratioImage ?>
         </header>
         <section id="scene">
             <div class="taquin">
