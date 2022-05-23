@@ -25,8 +25,22 @@ $nameSelected=substr($selectedImage,0,-4);
         $img=$_FILES['img'];//Stoquer dans img les images uploadées via la méthode http post
         $incoming_format=strtolower(substr($img['name'], -3));//transforme en minuscule l'extension des fichiers récupérée grace à la méthode substr
         $allowed_format=array("jpeg","jpg","png","gif");//Lister dans un tableau les formats d'images acceptés
-        echo "'extension du fichier entrant '.$incoming_format";
+        echo "'extension du fichier entrant '.$incoming_format".'<br>';
         if(in_array($incoming_format,$allowed_format)){//Si le format de l'image fait partie des formats tolérés 
+         //Récupérer le tableau de tailles de l'image
+        $dimensionImage=getimagesize($img['tmp_name']);
+        $ratio=$dimensionImage[0]/$dimensionImage[1];
+ //Tentative désespérée de créer miniature sans la classe de Grafikart
+        var_dump($dimensionImage);
+        echo "Largeur Image :".$dimensionImage[0];
+        echo "Hauteur image :".$dimensionImage[1];
+        echo " Ratio Image :".$ratio;
+        echo "Type d'image :".$img['type'];
+        if($img['type']==="image/jpeg"){
+            echo "lapin";
+        }
+        
+
         move_uploaded_file($img['tmp_name'],$dos."/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
         Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],215,112);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
         img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
