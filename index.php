@@ -13,19 +13,28 @@ $urlImage=$dirImages.$nomImage;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<script type="text/javascript" src="js/init.js"></script>-->
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/taquin.css">
     <title>Taquin</title>
+    <?php
+    //Valeurs pour ratio image dans la balise style
+    //Ratio est utilisé pour le positionnement de l'image de fond de chaque pièce et pour la taille du taquin
+    $dimensionsImage=getimagesize($urlImage);
+            $largeurImage=$dimensionsImage[0];
+            $hauteurImage=$dimensionsImage[1];
+            $ratioImage=$hauteurImage/$largeurImage;
+    ?>
     <!--Déclaration de la variable qui sera employée pour l'arrière plan de chaque pièce. Attention au slash ajouté avant le nom du dossier-->
-    <style>:root{--image-taquin:url('<?php echo "/".$urlImage ?>');
+    <style>:root{--image-taquin:url('<?php echo "../".$urlImage ?>');
                 --totalLargeur:<?php echo $sizeTaquin?>;
-                --ratioImage:1;
+                --ratioImage:<?php echo $ratioImage ?>;
             }
     </style>
 </head>
 <body onload="taquin()">
     <div class="c1">
         <header>
-            <h1>Raymond Taquin</h1>
+            <h1>Taquin de Raymond</h1>
         </header>
         <section id="scene">
             <div class="taquin">
@@ -48,13 +57,18 @@ $urlImage=$dirImages.$nomImage;
             </div>
         </section>
         <footer>
-            <div>Plan de site</div>
+        <h2>Admin</h2>
             <section id="planDeSite">
                 <nav><!--MENU-->
-                    <ul>Page administration
-                        <li><a href="admin.php" target="_self" rel="noopener noreferrer">Taquin</a></li>
+                    <ul>
+                        <h3>Plan de site</h3>
+                        <li><a href="admin.php" target="_self" rel="noopener noreferrer">Gestion du taquin</a></li>
                     </ul>
                 </nav>
+                <div class="debug">
+                    <h3>Debug</h3>
+                    <?php echo "ratio : ".$ratioImage ?>
+                </div>
             </section>
         </footer>
     </div>

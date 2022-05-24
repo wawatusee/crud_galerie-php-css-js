@@ -1,4 +1,5 @@
 function taquin() {
+    let ratioImage=getComputedStyle(document.documentElement).getPropertyValue('--ratioImage');
     //var nomImageTaquin=getNomImage();
    // document.documentElement.style.setProperty('--image-taquin','url("../img/'+nomImageTaquin+'")');
     /*Sélection de toutes les div identifiées pièces, dans un tableau "lesPieces", on range leurs réfèrences*/
@@ -11,12 +12,12 @@ function taquin() {
     var shuffleArray=[9,11,2,14,15,1,3,8,16,7,4,12,5,13,6,10];
     /*Boucle sur les  */
     for (var i = 0; i < lesPieces.length; i++) {
-        let largeurPiece=hauteurPiece=100;
+        let largeurPiece=100;
+        let hauteurPiece=largeurPiece*ratioImage;
         var chaquePiece = lesPieces[i];
-        var sonStyle = getComputedStyle(chaquePiece);
         /*Placement de l'image de fond pour chaque piece */
         chaquePiece.style.backgroundPositionX=`${-(i%4)*largeurPiece}px`;
-        chaquePiece.style.backgroundPositionY=`${-Math.floor(i/4)*largeurPiece}px`;
+        chaquePiece.style.backgroundPositionY=`${-Math.floor(i/4)*hauteurPiece}px`;
         /*Fin du Placement du fond pour chaque piece */
         /*chaquePiece.style.order = i+1;*/
         chaquePiece.style.order =shuffleArray[i];
@@ -28,6 +29,12 @@ function getNomImage(){
     var jsonImageTaquin = document.getElementById("planDeSite");
     var nomImageTaquin=jsonImageTaquin.textContent;
     return nomImageTaquin;
+}
+function getImageRatio(image){
+    let largeurImage=image.naturalWidth;
+    let hauteurImage=image.naturalHeight;
+    let ratio=largeurImage/hauteurImage;
+    return ratio;
 }
 function joue(evt) {
     //var nouvelleOrdrePieceCliquee=ordrePieceInvisible;

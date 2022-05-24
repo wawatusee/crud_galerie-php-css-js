@@ -1,8 +1,10 @@
 <?php
-//Donner le chemin des miniatures
+//Prendre dans config.php le chemin des miniatures
 require "config.php";
 $dos=$dirImages;
 $dir=opendir($dos."min/");//Ouvrir le répertoire des miniatures
+$largeurMiniature=200;
+$largeurImageTaquin=400;
 ?>
 <?php 
 //Import du fichier json source
@@ -25,11 +27,19 @@ $nameSelected=substr($selectedImage,0,-4);
         $img=$_FILES['img'];//Stoquer dans img les images uploadées via la méthode http post
         $incoming_format=strtolower(substr($img['name'], -3));//transforme en minuscule l'extension des fichiers récupérée grace à la méthode substr
         $allowed_format=array("jpeg","jpg","png","gif");//Lister dans un tableau les formats d'images acceptés
-        echo "'extension du fichier entrant '.$incoming_format";
+        echo "'extension du fichier entrant '.$incoming_format".'<br>';
         if(in_array($incoming_format,$allowed_format)){//Si le format de l'image fait partie des formats tolérés 
+         //Récupérer le tableau de tailles de l'image
+        $dimensionImage=getimagesize($img['tmp_name']);
+        $ratio=$dimensionImage[0]/$dimensionImage[1];
+        $hauteurMiniature=$largeurMiniature/$ratio;
+        $hauteurImageTaquin=$largeurImageTaquin/$ratio;
+        echo "Largeur: ".$dimensionImage[0].",Hauteur image :".$dimensionImage[1].",Ratio image : ".$ratio;
+ //Création de la miniature et de l'image au format taquin avec les méthodes de la classe imgClass
         move_uploaded_file($img['tmp_name'],$dos."/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
-        Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],215,112);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
-        img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
+        Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],$largeurMiniature,$hauteurMiniature);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
+        Img::creerMin("images/".$img['name'],$dos."/",$img['name'],$largeurImageTaquin,$hauteurImageTaquin);//Avec une méthode de la classe image de Grafikart créer une l'image du taquin stoquée dans le répertoire désiré 
+        //img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
         }
         else {
             echo "Ce fichier n'est pas au format accepté.";//Sinon on prévient le client que le format de l'image n'était pas bon
@@ -108,7 +118,6 @@ $nameSelected=substr($selectedImage,0,-4);
                 <li> uploader file</li>
                 <li>select file</li>
             </ul>
-             
             <ul>ToDo :
                 <li>delete file</li>
                 <li>rename file</li>
