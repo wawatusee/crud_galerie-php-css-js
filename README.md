@@ -8,8 +8,10 @@ Gallery with small crud with html css js json for the data files
  - use the ratio of the background image to fill the taquin with a non square image
 
 ## To do
+ - make an event at the issue of the taquin
  - delete a thumb an the linked big image
  - modify the name of a thumb and the big image linked to it
  - Use video to fill the taquin
  - build the taquin in JS instead of hard html
+
  
