@@ -13,6 +13,7 @@ $urlImage=$dirImages.$nomImage;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--<script type="text/javascript" src="js/init.js"></script>-->
+    <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/taquin.css">
     <title>Taquin</title>
     <?php
@@ -33,7 +34,7 @@ $urlImage=$dirImages.$nomImage;
 <body onload="taquin()">
     <div class="c1">
         <header>
-            <h1>Raymond Taquin</h1>
+            <h1>Taquin de Raymond</h1>
         </header>
         <section id="scene">
             <div class="taquin">
