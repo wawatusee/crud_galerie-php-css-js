@@ -34,7 +34,6 @@ $urlImage=$dirImages.$nomImage;
     <div class="c1">
         <header>
             <h1>Raymond Taquin</h1>
-            <?php echo "ratio".$ratioImage ?>
         </header>
         <section id="scene">
             <div class="taquin">
@@ -62,6 +61,7 @@ $urlImage=$dirImages.$nomImage;
                 <nav><!--MENU-->
                     <ul>Page administration
                         <li><a href="admin.php" target="_self" rel="noopener noreferrer">Taquin</a></li>
+                        <li><?php echo "ratio".$ratioImage ?></li>
                     </ul>
                 </nav>
             </section>

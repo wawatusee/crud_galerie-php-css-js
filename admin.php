@@ -118,7 +118,6 @@ $nameSelected=substr($selectedImage,0,-4);
                 <li> uploader file</li>
                 <li>select file</li>
             </ul>
-             
             <ul>ToDo :
                 <li>delete file</li>
                 <li>rename file</li>
