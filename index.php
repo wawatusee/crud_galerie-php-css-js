@@ -15,7 +15,10 @@ $urlImage=$dirImages.$nomImage;
     <!--<script type="text/javascript" src="js/init.js"></script>-->
     <link rel="stylesheet" href="css/taquin.css">
     <title>Taquin</title>
-    <?php $dimensionsImage=getimagesize($urlImage);
+    <?php
+    //Valeurs pour ratio image dans la balise style
+    //Ratio est utilisé pour le positionnement de l'image de fond de chaque pièce et pour la taille du taquin
+    $dimensionsImage=getimagesize($urlImage);
             $largeurImage=$dimensionsImage[0];
             $hauteurImage=$dimensionsImage[1];
             $ratioImage=$hauteurImage/$largeurImage;

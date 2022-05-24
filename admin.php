@@ -1,5 +1,5 @@
 <?php
-//Donner le chemin des miniatures
+//Prendre dans confoig.php le chemin des miniatures
 require "config.php";
 $dos=$dirImages;
 $dir=opendir($dos."min/");//Ouvrir le répertoire des miniatures
@@ -35,7 +35,7 @@ $nameSelected=substr($selectedImage,0,-4);
         $hauteurMiniature=$largeurMiniature/$ratio;
         $hauteurImageTaquin=$largeurImageTaquin/$ratio;
         echo "Largeur: ".$dimensionImage[0].",Hauteur image :".$dimensionImage[1].",Ratio image : ".$ratio;
- //Tentative désespérée de créer miniature sans la classe de Grafikart
+ //Création de la miniature et de l'image au format taquin avec les méthodes de la classe imgClass
         move_uploaded_file($img['tmp_name'],$dos."/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
         Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],$largeurMiniature,$hauteurMiniature);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
         Img::creerMin("images/".$img['name'],$dos."/",$img['name'],$largeurImageTaquin,$hauteurImageTaquin);//Avec une méthode de la classe image de Grafikart créer une l'image du taquin stoquée dans le répertoire désiré 

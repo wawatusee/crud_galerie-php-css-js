@@ -41,7 +41,6 @@ header {
     grid-row: 3/4;
     grid-column: 1/4;
 }
-.explain {}
 #scene {
     grid-row: 4/5;
     grid-column: 2/4;
