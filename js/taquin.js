@@ -50,7 +50,11 @@ function joue(evt) {
         console.log(sonStyle.order);
         console.log('Cliquabilité: la pièce invisible est en place ' + stylePieceInvisible.order + " || Et la tienne en " + sonStyle.order);
     };
-    taquinAfficheOrder();
+    //taquinAfficheOrder();
+   if( testIssue()){
+        document.getElementById("pieceInvisible").style.visibility ="visible";
+       console.log("Piece visible");
+   };
 };
 function pieceCliquable(pieceInvisible, pieceAtester, largueurTaquin = 4) {
     pieceInvisible = Number(pieceInvisible);
@@ -79,9 +83,21 @@ function taquinAfficheOrder() {
         console.log(sonStyle.order);
     };
     console.log(orderArray);
+    testIssue();
 };
 function testIssue(){
+    let nbrPiecesOrdonnees=0;
     var lesPieces = document.getElementsByClassName("piece");
     let nbrPieces= lesPieces.length;
+    for(var i=0; i<nbrPieces;i++){
+        var chaquePiece=lesPieces[i];
+        var sonStyle=getComputedStyle(chaquePiece);
+        if(sonStyle.order==i+1){
+            nbrPiecesOrdonnees+=1;
+        }
+        if(nbrPiecesOrdonnees>14){
+            return true;
+        }
+    }
     
 }
