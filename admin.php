@@ -1,5 +1,5 @@
 <?php
-//Prendre dans confoig.php le chemin des miniatures
+//Prendre dans config.php le chemin des miniatures
 require "config.php";
 $dos=$dirImages;
 $dir=opendir($dos."min/");//Ouvrir le répertoire des miniatures

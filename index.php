@@ -57,14 +57,18 @@ $urlImage=$dirImages.$nomImage;
             </div>
         </section>
         <footer>
-            <div>Plan de site</div>
+        <h2>Admin</h2>
             <section id="planDeSite">
                 <nav><!--MENU-->
-                    <ul>Page administration
-                        <li><a href="admin.php" target="_self" rel="noopener noreferrer">Taquin</a></li>
-                        <li><?php echo "ratio".$ratioImage ?></li>
+                    <ul>
+                        <h3>Plan de site</h3>
+                        <li><a href="admin.php" target="_self" rel="noopener noreferrer">Gestion du taquin</a></li>
                     </ul>
                 </nav>
+                <div class="debug">
+                    <h3>Debug</h3>
+                    <?php echo "ratio : ".$ratioImage ?>
+                </div>
             </section>
         </footer>
     </div>
