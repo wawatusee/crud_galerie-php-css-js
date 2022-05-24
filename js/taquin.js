@@ -78,5 +78,10 @@ function taquinAfficheOrder() {
         console.log('piece'+i+' :')
         console.log(sonStyle.order);
     };
-    //console.log(orderArray);
+    console.log(orderArray);
 };
+function testIssue(){
+    var lesPieces = document.getElementsByClassName("piece");
+    let nbrPieces= lesPieces.length;
+    
+}
