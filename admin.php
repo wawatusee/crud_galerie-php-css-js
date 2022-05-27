@@ -13,9 +13,8 @@ $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
 if(!isset($jsonImageTaquin)){
     $selectedImage="_mg_4586.jpg";
     echo "Par défaut : mg_4586.jpg";
-}else {$selectedImage=$jsonImageTaquin->image_taquin;
-    echo "on a été pécho dans ce contenu de json: ";
-    var_dump($jsonImageTaquin);
+}else {
+    $selectedImage=$jsonImageTaquin->image_taquin;
 }
 ?>
 <?php

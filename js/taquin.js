@@ -1,7 +1,5 @@
 function taquin() {
     let ratioImage=getComputedStyle(document.documentElement).getPropertyValue('--ratioImage');
-    //var nomImageTaquin=getNomImage();
-   // document.documentElement.style.setProperty('--image-taquin','url("../img/'+nomImageTaquin+'")');
     /*Sélection de toutes les div identifiées pièces, dans un tableau "lesPieces", on range leurs réfèrences*/
     var lesPieces = document.getElementsByClassName("piece");
     /*Trouver la piece invisible, */
