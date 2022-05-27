@@ -88,7 +88,7 @@ $nameSelected=substr($selectedImage,0,-4);
                 <?php 
                 while($file=readdir($dir)){//Pour chacune des images du dossier
                     $imageName=substr($file,0,-4);
-                    $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
+                    $allowed_format=array("peg","jpg","gif","png");//Définir les formats d'images acceptés
                     $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
                     if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
                     ?>
