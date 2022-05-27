@@ -15,12 +15,6 @@ if (isset($_GET["fileName"])){
     echo "pas passé le GET";
 }
 ?>
-<code>
-    <?php
-    echo "Depuis json extérieur:";
-    var_dump($jsonImageTaquin);
-    ?>
- </code>
 <?php
 //Modification fichier enregistré
 if(isset($_POST['newFileSelected'])){

@@ -21,7 +21,7 @@ if(!isset($jsonImageTaquin)){
 //Traitement upload image,création thumb et image plein format 
 $nameSelected=substr($selectedImage,0,-4);
     if(!empty($_FILES)){
-        require_once("imgClass.php");//J'importe la class image de Grafikart
+        require_once("imgClass.php");//J'importe la class image
         print_r($_FILES['img']);
         $img=$_FILES['img'];//Stoquer dans img les images uploadées via la méthode http post
         $incoming_format=strtolower(substr($img['name'], -3));//transforme en minuscule l'extension des fichiers récupérée grace à la méthode substr
@@ -41,6 +41,7 @@ $nameSelected=substr($selectedImage,0,-4);
         //img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
         }
         else {
+            //TESTS
             echo "Ce fichier n'est pas au format accepté.";//Sinon on prévient le client que le format de l'image n'était pas bon
         }
     }
@@ -69,7 +70,7 @@ $nameSelected=substr($selectedImage,0,-4);
                 echo $erreur;
             }
             ?>
-    <!--Upload Form-->
+<!--Upload Form-->
             <form method="post" action="" enctype ="multipart/form-data">
                 <fieldset>
                     <legend>Ajouter une image</legend>
@@ -77,10 +78,10 @@ $nameSelected=substr($selectedImage,0,-4);
                     <input class="submit" type="submit" name="Upload">
                 </fieldset>
             </form>
-    <!--Upload Form_end-->
+<!--Upload Form_end-->
             </section>
             <section >
-    <!--Gallery with Button radio Form for each-->
+<!--GALLERY with Button radio Form for each-->
                 <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
                 <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
                 <form class="gallery" action=" " method="GET">
@@ -91,14 +92,18 @@ $nameSelected=substr($selectedImage,0,-4);
                     $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
                     if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
                     ?>
+    <!--THUMBAIL-->
                     <figure class="min">
+    <!--OPEN zoombox on click thumbail -->
                         <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                             <img src="images/min/<?php echo $file; ?>"/>
                         </a>
+    <!--Image name--->                  
                         <div class="titleFigcaption">
                             <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
                             <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
                         </div>
+    <!--DELETE thumbail button-->
                         <button><img src="css/images/deleteButton.png" alt=""></button>
                     </figure>
                     <?php
@@ -106,7 +111,7 @@ $nameSelected=substr($selectedImage,0,-4);
                     }
                     ?>
                 </form>
-    <!--Gallery with Button radio Form for each_end-->
+<!--GALLERY with Button radio Form for each_end-->
             </section>
     </article>
     <fieldset>
