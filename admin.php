@@ -81,10 +81,10 @@ $nameSelected=substr($selectedImage,0,-4);
 <!--Upload Form_end-->
             </section>
             <section >
-<!--GALLERY with Button radio Form for each-->
+<!--GALLERY with radio and delete Buttons Forms for each-->
                 <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
                 <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
-                <form class="gallery" action=" " method="GET">
+                <div class="gallery">
                 <?php 
                 while($file=readdir($dir)){//Pour chacune des images du dossier
                     $imageName=substr($file,0,-4);
@@ -94,23 +94,28 @@ $nameSelected=substr($selectedImage,0,-4);
                     ?>
     <!--THUMBAIL-->
                     <figure class="min">
-    <!--OPEN zoombox on click thumbail -->
+        <!--OPEN zoombox on click thumbail -->
                         <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                             <img src="images/min/<?php echo $file; ?>"/>
                         </a>
-    <!--Image name--->                  
+        <!--Image vignette--->                  
                         <div class="titleFigcaption">
                             <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
-                            <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+        <!--Bouton de selection d'image-->        
+                            <form action="" method="GET">
+                                <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+                            </form>
                         </div>
-    <!--DELETE thumbail button-->
-                        <button><img src="css/images/deleteButton.png" alt=""></button>
+        <!--DELETE thumbail button-->
+                        <form action="delete.php" method="post">
+                            <button type="submit" name="fileToDestry" value="<?php  echo $file ?>"><img src="css/images/deleteButton.png" alt=""></button>
+                        </form>
                     </figure>
                     <?php
                         }
                     }
                     ?>
-                </form>
+                </div>
 <!--GALLERY with Button radio Form for each_end-->
             </section>
     </article>
