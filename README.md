@@ -8,10 +8,10 @@ Gallery with small crud with html css js json for the data files
  - use the ratio of the background image to fill the taquin with a non square image
  - Use video to fill the taquin(just have use a GIF, thats perfect)
   - make an event at the issue of the taquin
+   - delete a thumb an the linked big image
 
 ## To do
  - rule errors: if the default image(json)doesn't exist, if an image extension is jpeg and not jpg
- - delete a thumb an the linked big image
  - modify the name of a thumb and the big image linked to it
  - build the taquin in JS instead of hard html
 
