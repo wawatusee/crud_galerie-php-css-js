@@ -14,6 +14,7 @@ Gallery with small crud with html css js json for the data files
  - rule errors: if the default image(json)doesn't exist, if an image extension is jpeg and not jpg
  - modify the name of a thumb and the big image linked to it
  - build the taquin in JS instead of hard html
+ -Create an help with a zoomBox wich show the image of the 15n puzzle
 
  ## Parameters image taquin and explain
  The aspect of each piece come from the backround image of his div, the url of that imagage come from a file json("image-taquin.json") with the property "image_taquin";
