@@ -108,7 +108,7 @@ $nameSelected=substr($selectedImage,0,-4);
                         </div>
         <!--DELETE thumbail button-->
                         <form action="delete.php" method="post">
-                            <button type="submit" name="fileToDestry" value="<?php  echo $file ?>"><img src="css/images/deleteButton.png" alt=""></button>
+                            <button type="submit" name="chooseToDelete" value="<?php  echo $file ?>"><img src="css/images/deleteButton.png" alt=""></button>
                         </form>
                     </figure>
                     <?php
