@@ -12,9 +12,11 @@ $urlImage=$dirImages.$nomImage;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<script type="text/javascript" src="js/init.js"></script>-->
+    <script type="text/javascript" src="zoombox/jquery.js"></script>
+    <script type="text/javascript" src="zoombox/zoombox.js"></script> 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/taquin.css">
+    <link href="zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
     <title>Taquin</title>
     <?php
     //Valeurs pour ratio image dans la balise style
@@ -68,7 +70,7 @@ $urlImage=$dirImages.$nomImage;
                 </nav>
                 <div class="debug">
                     <h3>Debug</h3>
-                    <?php echo "ratio : ".$ratioImage ?>
+                    <a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a>
                 </div>
             </section>
         </footer>
