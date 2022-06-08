@@ -35,7 +35,7 @@ $urlImage=$dirImages.$nomImage;
 <body onload="taquin()">
     <div class="c1">
         <header>
-            <h1>Taquin de Raymond</h1>
+            <h1><?php echo $titrePage ?></h1>
         </header>
         <section id="scene">
             <div class="taquin">
