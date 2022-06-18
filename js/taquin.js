@@ -88,3 +88,10 @@ function testIssue(){
     }
     
 }
+function displayPiecesNumber(){
+    var pieces=document.getElementsByClassName("piece");
+    for (i=0; i<pieces.length; i++){
+        var piece=pieces[i]
+        piece.textContent=i+1;
+    }
+}
