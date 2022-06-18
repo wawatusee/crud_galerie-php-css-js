@@ -127,11 +127,11 @@ $nameSelected=substr($selectedImage,0,-4);
                 <li>Design perfect</li>
                 <li> uploader file</li>
                 <li>select file</li>
+                <li>delete file</li>
             </ul>
             <ul>ToDo :
-                <li>delete file</li>
                 <li>rename file</li>
-                <li>Factoriser le traitement et filtre des images, utilisé en ouverture de script et dans la boucle qui met en place le comportrement.</li>
+                <li>Factoriser le traitement et filtre des images, utilisé en ouverture de script et dans la boucle qui met en place le comportement.</li>
                 <li>Création de test pour chaque action</li>
                 <li>Rooter PHP pour comportement delete and select. </li>
             </ul>
