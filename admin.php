@@ -60,10 +60,10 @@ $nameSelected=substr($selectedImage,0,-4);
 </head>
 <body>
     <header>
-        <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Retour Page principale</a>
+        <h1>Réglages</h1><a href="index.php" target="_self" rel="noopener noreferrer">Taquin</a>
     </header>
     <article>
-        <h2>Gestion fichiers sources</h2>
+        <h2>Images taquin</h2>
         <section>
             <?php
             if(isset($erreur)){
@@ -73,7 +73,7 @@ $nameSelected=substr($selectedImage,0,-4);
 <!--Upload Form-->
             <form method="post" action="" enctype ="multipart/form-data">
                 <fieldset>
-                    <legend>Ajouter une image</legend>
+                    <legend>Nouvelle image</legend>
                     <input class="addFile" type="file" name="img"/>
                     <input class="submit" type="submit" name="Upload">
                 </fieldset>
@@ -82,8 +82,7 @@ $nameSelected=substr($selectedImage,0,-4);
             </section>
             <section >
 <!--GALLERY with radio and delete Buttons Forms for each-->
-                <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
-                <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
+                <p>Choisir/supprimer :</p>
                 <div class="gallery">
                 <?php 
                 while($file=readdir($dir)){//Pour chacune des images du dossier
@@ -105,7 +104,7 @@ $nameSelected=substr($selectedImage,0,-4);
                         <div class="actionButtons">
             <!--Bouton de selection d'image-->        
                                 <form action="" method="GET">
-                                    <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+                                    <input type="radio" id="<?php  echo $imageName?>" class="selectaButton" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
                                 </form>
             <!--DELETE thumbail button-->
                             <form action="delete.php" method="post">
