@@ -18,8 +18,6 @@ if (isset($_GET["fileName"])){
 <?php
 //Modification fichier enregistré
 if(isset($_POST['newFileSelected'])){
-    echo "Reçu depuis POST:";
-    var_dump ($_POST['newFileSelected']);
     /////TODO//////Remplacer dans le json la valeur de image_taquin, sauvegarder dans js/image-taquin.json
     //Remplacer dans le json la valeur de image_taquin
     $jsonImageTaquin->image_taquin=$newFileSelected;
@@ -28,8 +26,6 @@ if(isset($_POST['newFileSelected'])){
     //On aimerait un retour de cette action pour pouvoir passer à autre chose.
     $contentToSend=json_encode($jsonImageTaquin);
     file_put_contents("js/image-taquin.json",$contentToSend);
-    echo "C'est quoi que tu veux sauvegarder dans le JSON?";
-    echo "T'es sérieux? Ca? :".$contentToSend;
 } else echo "aucun fichier remplacé";
 ?>
 <html lang="en">
@@ -42,15 +38,11 @@ if(isset($_POST['newFileSelected'])){
 </head>
 <body>
 <header>
-    <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Retour Page publique</a>
+    <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Taquin</a>
     </header>
     <article>
-        <h2>Validation fichier sélectionné</h2>
+        <h2>Modification image</h2>
         <section class="gallery">
-            <figure class="min">
-                <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
-                <figcaption><div class="titleFigcaption">Fichier actuel :</div><div></div><?php echo $selectedImage; ?></div></figcaption>
-            </figure>
             <figure class="min">
                 <img src="images/min/<?php echo $newFileSelected; ?>"/>
                 <figcaption>
@@ -69,11 +61,9 @@ if(isset($_POST['newFileSelected'])){
     <!--Formulaire de validation de nouvelle image-->
         <form action="" method="POST">
                 <fieldset>
-                <legend>Voulez vous remplacer?</legend>
-                <textarea name="selectedImage" id=""><?php echo $selectedImage; ?></textarea>
-                Par
+                <legend>Nouvelle image du taquin</legend>
                 <textarea name="newFileSelected" id=""><?php echo $newFileSelected; ?></textarea>
-                <button type="submit">Remplacer</button>
+                <button type="submit">Valider</button>
             </fieldset>
         </form>
     </article>
