@@ -27,7 +27,8 @@ h1>a{
 h1>a,header>a{
     color: pink;
 }
-/*MAIN*/
+/*Admin MAIN*/
+
 .addFile, .submit{
     padding:5px;
     background-color: pink;
@@ -46,19 +47,18 @@ flex-wrap: wrap;
 }
 .min{
     background-color: white;
-    max-width: fit-content;
+    max-width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-
 }
 .titleFigcaption{
     background-color:rgb(87, 82, 78);
     color: white;
+}
+.actionButtons{
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
-.deleteButton{
-    justify-content: space-around;
-}
+

@@ -101,15 +101,17 @@ $nameSelected=substr($selectedImage,0,-4);
         <!--Image vignette--->                  
                         <div class="titleFigcaption">
                             <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
-        <!--Bouton de selection d'image-->        
-                            <form action="" method="GET">
-                                <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+                        </div>
+                        <div class="actionButtons">
+            <!--Bouton de selection d'image-->        
+                                <form action="" method="GET">
+                                    <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+                                </form>
+            <!--DELETE thumbail button-->
+                            <form action="delete.php" method="post">
+                                <button type="submit" name="chooseToDelete" value="<?php  echo $file ?>"><img src="css/images/deleteButton.png" alt=""></button>
                             </form>
                         </div>
-        <!--DELETE thumbail button-->
-                        <form action="delete.php" method="post">
-                            <button type="submit" name="chooseToDelete" value="<?php  echo $file ?>"><img src="css/images/deleteButton.png" alt=""></button>
-                        </form>
                     </figure>
                     <?php
                         }
