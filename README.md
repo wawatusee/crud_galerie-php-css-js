@@ -12,7 +12,7 @@ Gallery with small crud with html css js json for the data files
    - Create an help with a zoomBox wich show the image of the 15n puzzle
 
 ## To do
- - rule errors: if the default image(json)doesn't exist, if an image extension is jpeg and not jpg
+ - rule errors: admin,on upload, rule imagesize error; if the default image(json)doesn't exist; if an image extension is jpeg and not jpg.
  - modify the name of a thumb and the big image linked to it
  - build the taquin in JS instead of hard html
 
