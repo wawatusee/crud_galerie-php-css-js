@@ -64,6 +64,7 @@ $urlImage=$dirImages.$nomImage;
                 <div class="debug">
                     <h3>Debug</h3>
                     <a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a>
+                    <a href="#" onclick=displayPiecesNumber();>1</a>
                 </div>
             </section>
         </footer>
