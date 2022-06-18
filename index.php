@@ -37,7 +37,7 @@ $urlImage=$dirImages.$nomImage;
 <body onload="taquin()">
     <div class="c1">
         <header>
-            <h1><?php echo $titrePage ?></h1>
+            <h1><?php echo $titrePage ?><a href="admin.php" target="_self" rel="noopener noreferrer"><img src="css/images/engrenages.png" alt="Gestion taquin"></a></h1>
         </header>
         <section id="scene">
             <div class="taquin">
@@ -60,14 +60,7 @@ $urlImage=$dirImages.$nomImage;
             </div>
         </section>
         <footer>
-        <h2>Admin</h2>
             <section id="planDeSite">
-                <nav><!--MENU-->
-                    <ul>
-                        <h3>Plan de site</h3>
-                        <li><a href="admin.php" target="_self" rel="noopener noreferrer">Gestion du taquin</a></li>
-                    </ul>
-                </nav>
                 <div class="debug">
                     <h3>Debug</h3>
                     <a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a>

@@ -67,7 +67,8 @@ h2{
     color: rgb(190, 119, 119);
     font-size: 1.2em;
 }
-h3{ color: rgb(230, 166, 177);
+h3{
+     color: rgb(230, 166, 177);
     font-size: small;
 }
 footer {
