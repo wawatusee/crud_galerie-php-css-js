@@ -62,9 +62,11 @@ $urlImage=$dirImages.$nomImage;
         <footer>
             <section id="planDeSite">
                 <div class="debug">
-                    <h3>Debug</h3>
-                    <a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a>
-                    <a href="#" onclick=displayPiecesNumber();>1</a>
+                     <fieldset>
+                        <legend>Debug</legend>
+                        <button><a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a></button>
+                        <button class="numeroButton"><a href="#" onclick=displayPiecesNumber();>1</a></button>
+                     </fieldset>
                 </div>
             </section>
         </footer>

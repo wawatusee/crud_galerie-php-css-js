@@ -88,10 +88,20 @@ function testIssue(){
     }
     
 }
+var displayedNumero=false;
 function displayPiecesNumber(){
     var pieces=document.getElementsByClassName("piece");
-    for (i=0; i<pieces.length; i++){
-        var piece=pieces[i]
-        piece.textContent=i+1;
+    if(displayedNumero===false){
+        for (i=0; i<pieces.length; i++){
+            var piece=pieces[i]
+            piece.textContent=i+1;
+        }
+        displayedNumero=true;
+    }else{
+        for (i=0; i<pieces.length; i++){
+            var piece=pieces[i]
+            piece.textContent=" ";
+        }
+        displayedNumero=false;
     }
 }
