@@ -47,7 +47,7 @@ flex-wrap: wrap;
 }
 .min{
     background-color: white;
-    max-width: 200px;
+    max-width: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -61,4 +61,3 @@ flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-between;
 }
-
