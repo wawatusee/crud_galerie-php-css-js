@@ -65,7 +65,7 @@ $urlImage=$dirImages.$nomImage;
                      <fieldset>
                         <legend>Debug</legend>
                         <button><a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a></button>
-                        <button class="numeroButton"><a href="#" onclick=displayPiecesNumber();>1</a></button>
+                        <button id="numeroButton"><a  href="#" onclick=displayPiecesNumber();>1</a></button>
                      </fieldset>
                 </div>
             </section>

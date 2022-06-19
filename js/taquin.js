@@ -90,6 +90,9 @@ function testIssue(){
 }
 var displayedNumero=false;
 function displayPiecesNumber(){
+    var numeroButton=document.getElementById("numeroButton");
+    var numeroButtonStyle=getComputedStyle(numeroButton);
+    console.log(numeroButton);
     var pieces=document.getElementsByClassName("piece");
     if(displayedNumero===false){
         for (i=0; i<pieces.length; i++){
@@ -104,4 +107,5 @@ function displayPiecesNumber(){
         }
         displayedNumero=false;
     }
+    //numeroButton.style.color="green";
 }
