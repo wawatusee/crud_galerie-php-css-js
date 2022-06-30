@@ -25,7 +25,13 @@ if(isset($_POST['newFileSelected'])){
     //Le 3eme parametre devrait être rempli, peut-être avec lock-ex pour s'assurer qu'un seul administrateur change le fichier JSON
     //On aimerait un retour de cette action pour pouvoir passer à autre chose.
     $contentToSend=json_encode($jsonImageTaquin);
-    file_put_contents("js/image-taquin.json",$contentToSend);
+    $defaultImageChanged=file_put_contents("js/image-taquin.json",$contentToSend);
+    //Redirection vers page publique
+    if($defaultImageChanged){
+        //echo "fichier remplacé";
+        header("Location:../");
+    }
+
 } else echo "aucun fichier remplacé";
 ?>
 <html lang="en">
