@@ -55,7 +55,6 @@ $nameSelected=substr($selectedImage,0,-4);
 function getExtension( $fileTested){
     $arrayFromtheFileExplode=explode(".",$fileTested);
     $extensionFile=end($arrayFromtheFileExplode);
-    echo "Houla! On a ça comme extension : ".$extensionFile;
    return $extensionFile;
 }
 ?>

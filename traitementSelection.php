@@ -10,7 +10,6 @@ $selectedImage=$jsonImageTaquin->image_taquin;
 //Si GET est reçu, le nom du fichier sélectionnée est stoqué 
 if (isset($_GET["fileName"])){
     $newFileSelected=$_GET["fileName"];
-    echo "Passé le GET";
 }else{
     echo "pas passé le GET";
 }
@@ -26,9 +25,8 @@ if(isset($_POST['newFileSelected'])){
     //On aimerait un retour de cette action pour pouvoir passer à autre chose.
     $contentToSend=json_encode($jsonImageTaquin);
     $defaultImageChanged=file_put_contents("js/image-taquin.json",$contentToSend);
-    //Redirection vers page publique
+    //Quand le taquin par défaut a été changé, edirection vers page publique
     if($defaultImageChanged){
-        //echo "fichier remplacé";
         header("Location:index.php");
     }
 
@@ -61,7 +59,6 @@ if(isset($_POST['newFileSelected'])){
         //EN cours
         function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
             $jsonImageTaquin->image_taquin=$content;
-            
         }
         ?>
     <!--Formulaire de validation de nouvelle image-->
