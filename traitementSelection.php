@@ -29,7 +29,7 @@ if(isset($_POST['newFileSelected'])){
     //Redirection vers page publique
     if($defaultImageChanged){
         //echo "fichier remplacé";
-        header("Location:../");
+        header("Location:index.php");
     }
 
 } else echo "aucun fichier remplacé";
