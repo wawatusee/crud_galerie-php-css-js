@@ -10,9 +10,9 @@ class Img{
 		if(substr(strtolower($img),-4)==".jpg"){$image = imagecreatefromjpeg($img); }
 		else if(substr(strtolower($img),-4)==".png"){$image = imagecreatefrompng($img); }
 		else if(substr(strtolower($img),-4)==".gif"){$image = imagecreatefromgif($img); }
+		else if ( substr(strtolower($img),-5==".jpeg")) {$image = imagecreatefromjpeg($img);}
 		// L'image ne peut etre redimensionne
 		else{return false; }
-		
 		// Création des miniatures
 		// On cré une image vide de la largeur et hauteur voulue
 		$miniature =imagecreatetruecolor ($mlargeur,$mhauteur); 
@@ -26,17 +26,7 @@ class Img{
 		imagejpeg($miniature,$chemin."/".$nom.".jpg",90);
 		return true;
 	}
-	static function convertirJPG($img){
-				// On cré une image à partir du fichier récup
-				if(substr(strtolower($img),-4)==".jpg"){$image = imagecreatefromjpeg($img); }
-				else if(substr(strtolower($img),-4)==".png"){$image = imagecreatefrompng($img); }
-				else if(substr(strtolower($img),-4)==".gif"){$image = imagecreatefromgif($img); }
-				// L'image ne peut etre redimensionne
-				else{return false;}
-				unlink($img);
-				imagejpeg($image,substr($img,0,-3)."jpg",90);
-				return true;
-	}
+
 }
 
 ?>
