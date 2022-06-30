@@ -10,11 +10,13 @@ Gallery with small crud with html css js json for the data files
   - make an event at the issue of the taquin
    - delete a thumb an the linked big image
    - Create an help with a zoomBox wich show the image of the 15n puzzle
+   - Create an help service wich show the original number of each case
 
 ## To do
  - rule errors: admin,on upload, rule imagesize error; if the default image(json)doesn't exist; if an image extension is jpeg and not jpg.
  - modify the name of a thumb and the big image linked to it
  - build the taquin in JS instead of hard html
+ - on change the default image, when it's done, go to the public page directly
 
  ## Parameters image taquin and explain
  The aspect of each piece come from the backround image of his div, the url of that imagage come from a file json("image-taquin.json") with the property "image_taquin";
