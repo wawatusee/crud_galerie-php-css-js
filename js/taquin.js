@@ -32,12 +32,13 @@ function joue(evt) {
         pieceInvisible.style.order = sonStyle.order;
         evt.target.style.order = temporaryOrder;
         console.log('La pièce invisible qui est en position ' + stylePieceInvisible.order + ' prend la position de la piece cliquée ' + sonStyle.order);
+        console.log("Index de pièce cliquée"+aGetPiecesOrder().indexOf(Number(temporaryOrder)));
     } else {
         console.log(evt);
         console.log(sonStyle.order);
         console.log('Cliquabilité: la pièce invisible est en place ' + stylePieceInvisible.order + " || Et la tienne en " + sonStyle.order);
     };
-    //taquinAfficheOrder();
+   
    if( testIssue()){
         document.getElementById("pieceInvisible").style.visibility ="visible";
        console.log("Piece visible");
@@ -58,20 +59,21 @@ function pieceCliquable(pieceInvisible, pieceAtester, largueurTaquin = 4) {
 }
 
 
-function taquinAfficheOrder() {
+function aGetPiecesOrder() {
     var lesPieces = document.getElementsByClassName("piece");
     let orderArray=[];
     stylePieceInvisible = getComputedStyle(pieceInvisible);
     for (var i = 0; i < lesPieces.length; i++) {
         var chaquePiece = lesPieces[i];
         var sonStyle = getComputedStyle(chaquePiece);
-        orderArray.push(sonStyle);
-        console.log('piece'+i+' :')
-        console.log(sonStyle.order);
+        var sonOrdre=Number(sonStyle.order);
+        orderArray.push(sonOrdre);
+        //console.log('piece'+i+' :'+sonOrdre)
+        //console.log(sonOrdre);
     };
-    console.log(orderArray);
-    testIssue();
+    return orderArray
 };
+
 function testIssue(){
     let nbrPiecesOrdonnees=0;
     var lesPieces = document.getElementsByClassName("piece");
