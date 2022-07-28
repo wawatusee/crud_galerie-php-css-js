@@ -2,18 +2,18 @@ function taquin() {
     let ratioImage=getComputedStyle(document.documentElement).getPropertyValue('--ratioImage');
     /*Sélection de toutes les div identifiées pièces, dans un tableau "lesPieces", on range leurs réfèrences*/
     var lesPieces = document.getElementsByClassName("piece");
-    /*Find the invisible piece*/
+    /*Find the invisible piece:*/
     pieceInvisible = document.querySelector("#pieceInvisible");
-    /*stoquer son style dans une variable :*/
+    /*Get his style :*/
     stylePieceInvisible = getComputedStyle(pieceInvisible);
-    /*Tableau de positions autres */
+    /*Create an Array of an playable order of pieces */
     var shuffleArray=[9,11,2,14,15,1,3,8,16,7,4,12,5,13,6,10];
-    /*Boucle sur les  */
+    /*Loop on taquin's pieces*/
     for (var i = 0; i < lesPieces.length; i++) {
         let largeurPiece=100;
         let hauteurPiece=largeurPiece*ratioImage;
         var chaquePiece = lesPieces[i];
-        /*Background location for each piece*/
+        /*Background image position for each piece*/
         chaquePiece.style.backgroundPositionX=`${-(i%4)*largeurPiece}px`;
         chaquePiece.style.backgroundPositionY=`${-Math.floor(i/4)*hauteurPiece}px`;
         /*Background is ok for each piece */
@@ -36,8 +36,7 @@ function joue(evt) {
     } 
    if( testIssue()){
     //Test issue tell if the taquin is in order
-    //If thats true the invisible piece become visible. End of the gagme.
-        //document.getElementById("pieceInvisible").style.visibility ="visible";
+    //If thats true end of the gagme.
         endOfGame();
    };
 };
@@ -56,7 +55,7 @@ function pieceCliquable(pieceInvisible, pieceAtester, largueurTaquin = 4) {
 }
 
 function aGetPiecesOrder() {
-    //Range the the flex order of taquin's pieces in an array. Return this array
+    //Tidy the flex order of taquin's pieces in an array. Return this array
     var lesPieces = document.getElementsByClassName("piece");
     let orderArray=[];
     stylePieceInvisible = getComputedStyle(pieceInvisible);
@@ -82,8 +81,7 @@ function testIssue(){
         if(nbrPiecesOrdonnees>14){
             return true;
         }
-    }
-    
+    }   
 }
 var displayedNumero=false;
 function displayPiecesNumber(){
@@ -104,7 +102,6 @@ function displayPiecesNumber(){
     }
 }
 function endOfGame(){
-    console.log("Lapin");
     var lesPieces = document.getElementsByClassName("piece");
     /*The invisible piece is not any more*/
     document.getElementById("pieceInvisible").style.visibility ="visible";
