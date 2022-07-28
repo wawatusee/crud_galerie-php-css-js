@@ -2,7 +2,7 @@ function taquin() {
     let ratioImage=getComputedStyle(document.documentElement).getPropertyValue('--ratioImage');
     /*Sélection de toutes les div identifiées pièces, dans un tableau "lesPieces", on range leurs réfèrences*/
     var lesPieces = document.getElementsByClassName("piece");
-    /*Trouver la piece invisible, */
+    /*Find the invisible piece*/
     pieceInvisible = document.querySelector("#pieceInvisible");
     /*stoquer son style dans une variable :*/
     stylePieceInvisible = getComputedStyle(pieceInvisible);
@@ -13,35 +13,32 @@ function taquin() {
         let largeurPiece=100;
         let hauteurPiece=largeurPiece*ratioImage;
         var chaquePiece = lesPieces[i];
-        /*Placement de l'image de fond pour chaque piece */
+        /*Background location for each piece*/
         chaquePiece.style.backgroundPositionX=`${-(i%4)*largeurPiece}px`;
         chaquePiece.style.backgroundPositionY=`${-Math.floor(i/4)*hauteurPiece}px`;
-        /*Fin du Placement du fond pour chaque piece */
-        /*chaquePiece.style.order = i+1;*/
+        /*Background is ok for each piece */
         chaquePiece.style.order =shuffleArray[i];
-        /*Mise en place des écouteurs sur chaque pièce */
+        /*Listenner on each piece */
         chaquePiece.addEventListener("click", joue);
     };
 };
 function joue(evt) {
-    //var nouvelleOrdrePieceCliquee=ordrePieceInvisible;
+    //Get the style of the clicked piece
     var sonStyle = getComputedStyle(evt.target);
+    //Check if this piece is cliquable
     if (pieceCliquable(stylePieceInvisible.order, sonStyle.order)) {
-        // Echange l'order entre la pièce invisible et la pièce cliquée
+        //If true, the order of the invisible piece become the order of the clicked piece
         let temporaryOrder = pieceInvisible.style.order;
         pieceInvisible.style.order = sonStyle.order;
         evt.target.style.order = temporaryOrder;
         console.log('La pièce invisible qui est en position ' + stylePieceInvisible.order + ' prend la position de la piece cliquée ' + sonStyle.order);
         console.log("Index de pièce cliquée"+aGetPiecesOrder().indexOf(Number(temporaryOrder)));
-    } else {
-        console.log(evt);
-        console.log(sonStyle.order);
-        console.log('Cliquabilité: la pièce invisible est en place ' + stylePieceInvisible.order + " || Et la tienne en " + sonStyle.order);
-    };
-   
+    } 
    if( testIssue()){
-        document.getElementById("pieceInvisible").style.visibility ="visible";
-       console.log("Piece visible");
+    //Test issue tell if the taquin is in order
+    //If thats true the invisible piece become visible. End of the gagme.
+        //document.getElementById("pieceInvisible").style.visibility ="visible";
+        endOfGame();
    };
 };
 function pieceCliquable(pieceInvisible, pieceAtester, largueurTaquin = 4) {
@@ -58,8 +55,8 @@ function pieceCliquable(pieceInvisible, pieceAtester, largueurTaquin = 4) {
     return jouable;
 }
 
-
 function aGetPiecesOrder() {
+    //Range the the flex order of taquin's pieces in an array. Return this array
     var lesPieces = document.getElementsByClassName("piece");
     let orderArray=[];
     stylePieceInvisible = getComputedStyle(pieceInvisible);
@@ -68,8 +65,6 @@ function aGetPiecesOrder() {
         var sonStyle = getComputedStyle(chaquePiece);
         var sonOrdre=Number(sonStyle.order);
         orderArray.push(sonOrdre);
-        //console.log('piece'+i+' :'+sonOrdre)
-        //console.log(sonOrdre);
     };
     return orderArray
 };
@@ -92,13 +87,11 @@ function testIssue(){
 }
 var displayedNumero=false;
 function displayPiecesNumber(){
-    var numeroButton=document.getElementById("numeroButton");
-    var numeroButtonStyle=getComputedStyle(numeroButton);
-    console.log(numeroButton);
     var pieces=document.getElementsByClassName("piece");
     if(displayedNumero===false){
         for (i=0; i<pieces.length; i++){
             var piece=pieces[i]
+            //Display the number of the piece
             piece.textContent=i+1;
         }
         displayedNumero=true;
@@ -109,5 +102,16 @@ function displayPiecesNumber(){
         }
         displayedNumero=false;
     }
-    //numeroButton.style.color="green";
+}
+function endOfGame(){
+    console.log("Lapin");
+    var lesPieces = document.getElementsByClassName("piece");
+    /*The invisible piece is not any more*/
+    document.getElementById("pieceInvisible").style.visibility ="visible";
+        /*Boucle sur les  */
+        for (var i = 0; i < lesPieces.length; i++) {
+            /*Kill Listenner on each piece */
+            var chaquePiece = lesPieces[i];
+            chaquePiece.removeEventListener("click", joue);
+        };
 }
