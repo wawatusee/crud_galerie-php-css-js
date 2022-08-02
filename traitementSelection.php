@@ -10,22 +10,13 @@ $selectedImage=$jsonImageTaquin->image_taquin;
 //Si GET est reçu, le nom du fichier sélectionnée est stoqué 
 if (isset($_GET["fileName"])){
     $newFileSelected=$_GET["fileName"];
-    echo "Passé le GET";
 }else{
     echo "pas passé le GET";
 }
 ?>
-<code>
-    <?php
-    echo "Depuis json extérieur:";
-    var_dump($jsonImageTaquin);
-    ?>
- </code>
 <?php
 //Modification fichier enregistré
 if(isset($_POST['newFileSelected'])){
-    echo "Reçu depuis POST:";
-    var_dump ($_POST['newFileSelected']);
     /////TODO//////Remplacer dans le json la valeur de image_taquin, sauvegarder dans js/image-taquin.json
     //Remplacer dans le json la valeur de image_taquin
     $jsonImageTaquin->image_taquin=$newFileSelected;
@@ -33,9 +24,12 @@ if(isset($_POST['newFileSelected'])){
     //Le 3eme parametre devrait être rempli, peut-être avec lock-ex pour s'assurer qu'un seul administrateur change le fichier JSON
     //On aimerait un retour de cette action pour pouvoir passer à autre chose.
     $contentToSend=json_encode($jsonImageTaquin);
-    file_put_contents("js/image-taquin.json",$contentToSend);
-    echo "C'est quoi que tu veux sauvegarder dans le JSON?";
-    echo "T'es sérieux? Ca? :".$contentToSend;
+    $defaultImageChanged=file_put_contents("js/image-taquin.json",$contentToSend);
+    //Quand le taquin par défaut a été changé, edirection vers page publique
+    if($defaultImageChanged){
+        header("Location:index.php");
+    }
+
 } else echo "aucun fichier remplacé";
 ?>
 <html lang="en">
@@ -48,15 +42,11 @@ if(isset($_POST['newFileSelected'])){
 </head>
 <body>
 <header>
-    <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Retour Page publique</a>
+    <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Taquin</a>
     </header>
     <article>
-        <h2>Validation fichier sélectionné</h2>
+        <h2>Modification image</h2>
         <section class="gallery">
-            <figure class="min">
-                <img src="images/min/<?php echo $selectedImage; ?>" title="Image Taquin actuelle"/>
-                <figcaption><div class="titleFigcaption">Fichier actuel :</div><div></div><?php echo $selectedImage; ?></div></figcaption>
-            </figure>
             <figure class="min">
                 <img src="images/min/<?php echo $newFileSelected; ?>"/>
                 <figcaption>
@@ -69,17 +59,14 @@ if(isset($_POST['newFileSelected'])){
         //EN cours
         function saveNewNameToJson(string $content,string $location="js/image-taquin.json"){
             $jsonImageTaquin->image_taquin=$content;
-            
         }
         ?>
     <!--Formulaire de validation de nouvelle image-->
         <form action="" method="POST">
                 <fieldset>
-                <legend>Voulez vous remplacer?</legend>
-                <textarea name="selectedImage" id=""><?php echo $selectedImage; ?></textarea>
-                Par
+                <legend>Nouvelle image du taquin</legend>
                 <textarea name="newFileSelected" id=""><?php echo $newFileSelected; ?></textarea>
-                <button type="submit">Remplacer</button>
+                <button type="submit">Valider</button>
             </fieldset>
         </form>
     </article>

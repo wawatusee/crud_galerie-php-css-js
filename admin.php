@@ -13,22 +13,27 @@ $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
 if(!isset($jsonImageTaquin)){
     $selectedImage="_mg_4586.jpg";
     echo "Par défaut : mg_4586.jpg";
-}else {$selectedImage=$jsonImageTaquin->image_taquin;
-    echo "on a été pécho dans ce contenu de json: ";
-    var_dump($jsonImageTaquin);
+}else {
+    $selectedImage=$jsonImageTaquin->image_taquin;
 }
 ?>
 <?php
 //Traitement upload image,création thumb et image plein format 
 $nameSelected=substr($selectedImage,0,-4);
     if(!empty($_FILES)){
-        require_once("imgClass.php");//J'importe la class image de Grafikart
+        require_once("imgClass.php");//J'importe la class image
         print_r($_FILES['img']);
-        $img=$_FILES['img'];//Stoquer dans img les images uploadées via la méthode http post
-        $incoming_format=strtolower(substr($img['name'], -3));//transforme en minuscule l'extension des fichiers récupérée grace à la méthode substr
+        $img=$_FILES['img'];//stock the image in $img
+        //Quest for the extension of the file
+        echo "Extension de fichier entrant:";
+        $nomDuFichier=$img["name"];
+        $incoming_format=getExtension($nomDuFichier);
+       //end of Quest for the extension of the file
+        //$incoming_format=strtolower(substr($img['name'], -3));//transforme en minuscule l'extension des fichiers récupérée grace à la méthode substr
         $allowed_format=array("jpeg","jpg","png","gif");//Lister dans un tableau les formats d'images acceptés
         echo "'extension du fichier entrant '.$incoming_format".'<br>';
         if(in_array($incoming_format,$allowed_format)){//Si le format de l'image fait partie des formats tolérés 
+            echo "Format accepté";
          //Récupérer le tableau de tailles de l'image
         $dimensionImage=getimagesize($img['tmp_name']);
         $ratio=$dimensionImage[0]/$dimensionImage[1];
@@ -39,12 +44,19 @@ $nameSelected=substr($selectedImage,0,-4);
         move_uploaded_file($img['tmp_name'],$dos."/".$img['name']);//Bouger l'image dans le répertoire prévu avec son nom initial
         Img::creerMin("images/".$img['name'],$dos."/"."/min",$img['name'],$largeurMiniature,$hauteurMiniature);//Avec une méthode de la classe image de Grafikart créer une miniature stoquée dans le répertoire désiré 
         Img::creerMin("images/".$img['name'],$dos."/",$img['name'],$largeurImageTaquin,$hauteurImageTaquin);//Avec une méthode de la classe image de Grafikart créer une l'image du taquin stoquée dans le répertoire désiré 
-        //img::convertirJPG($dos."/".$img['name']);//Toujours avec une méthode grafikart, convertir l'image en jpg
         }
         else {
+            //TESTS
             echo "Ce fichier n'est pas au format accepté.";//Sinon on prévient le client que le format de l'image n'était pas bon
         }
     }
+?>
+<?php
+function getExtension( $fileTested){
+    $arrayFromtheFileExplode=explode(".",$fileTested);
+    $extensionFile=end($arrayFromtheFileExplode);
+   return $extensionFile;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -60,54 +72,64 @@ $nameSelected=substr($selectedImage,0,-4);
 </head>
 <body>
     <header>
-        <h1>Page administration</h1><a href="index.php" target="_self" rel="noopener noreferrer">Retour Page principale</a>
+        <h1>Réglages</h1><a href="index.php" target="_self" rel="noopener noreferrer">Taquin</a>
     </header>
     <article>
-        <h2>Gestion fichiers sources</h2>
+        <h2>Images taquin</h2>
         <section>
             <?php
             if(isset($erreur)){
                 echo $erreur;
             }
             ?>
-    <!--Upload Form-->
+<!--Upload Form-->
             <form method="post" action="" enctype ="multipart/form-data">
                 <fieldset>
-                    <legend>Ajouter une image</legend>
+                    <legend>Nouvelle image</legend>
                     <input class="addFile" type="file" name="img"/>
                     <input class="submit" type="submit" name="Upload">
                 </fieldset>
             </form>
-    <!--Upload Form_end-->
+<!--Upload Form_end-->
             </section>
             <section >
-    <!--Gallery with Button radio Form for each-->
-                <p>Sélectionner un fichier par défaut en cochant la case correspondante.</p>
-                <p>Supprimer un fichier de la bibliothèque en appuyant sur la poubelle correspondant.</p>
-                <form class="gallery" action=" " method="GET">
+<!--GALLERY with radio and delete Buttons Forms for each-->
+                <p>Choisir/supprimer :</p>
+                <div class="gallery">
                 <?php 
                 while($file=readdir($dir)){//Pour chacune des images du dossier
                     $imageName=substr($file,0,-4);
-                    $allowed_format=array("jpeg","jpg","gif","png");//Définir les formats d'images acceptés
+                    $allowed_format=array("peg","jpg","gif","png");//Définir les formats d'images acceptés
                     $incoming_format=strtolower(substr($file,-3));//Convertir l'extension de l'image en minuscules
                     if(in_array($incoming_format,$allowed_format)){//Si les formats du fichier sont acceptés
                     ?>
+    <!--THUMBAIL-->
                     <figure class="min">
+        <!--OPEN zoombox on click thumbail -->
                         <a href="images/<?php echo $file; ?>" rel="zoombox[galerie]">
                             <img src="images/min/<?php echo $file; ?>"/>
                         </a>
+        <!--Image vignette--->                  
                         <div class="titleFigcaption">
                             <label for="<?php  echo $imageName ?>"><?php  echo $imageName ?></label>
-                            <input type="radio" id="<?php  echo $imageName?>" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
                         </div>
-                        <button><img src="css/images/deleteButton.png" alt=""></button>
+                        <div class="actionButtons">
+            <!--Bouton de selection d'image-->        
+                                <form action="" method="GET">
+                                    <input type="radio" id="<?php  echo $imageName?>" class="selectaButton" name="defaultTaquin" value="<?php  echo $file ?>"<?php echo $imageName===$nameSelected? "checked>":">"?>
+                                </form>
+            <!--DELETE thumbail button-->
+                            <form action="delete.php" method="post">
+                                <button type="submit" name="chooseToDelete" value="<?php  echo $file ?>"><img src="css/images/deleteButton.png" alt=""></button>
+                            </form>
+                        </div>
                     </figure>
                     <?php
                         }
                     }
                     ?>
-                </form>
-    <!--Gallery with Button radio Form for each_end-->
+                </div>
+<!--GALLERY with Button radio Form for each_end-->
             </section>
     </article>
     <fieldset>
@@ -117,11 +139,11 @@ $nameSelected=substr($selectedImage,0,-4);
                 <li>Design perfect</li>
                 <li> uploader file</li>
                 <li>select file</li>
+                <li>delete file</li>
             </ul>
             <ul>ToDo :
-                <li>delete file</li>
                 <li>rename file</li>
-                <li>Factoriser le traitement et filtre des images, utilisé en ouverture de script et dans la boucle qui met en place le comportrement.</li>
+                <li>Factoriser le traitement et filtre des images, utilisé en ouverture de script et dans la boucle qui met en place le comportement.</li>
                 <li>Création de test pour chaque action</li>
                 <li>Rooter PHP pour comportement delete and select. </li>
             </ul>

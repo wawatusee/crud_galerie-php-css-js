@@ -13,3 +13,9 @@ function onSelect(evt){
     //let toSend= '"traitementSelection.php?fileName='+imageSelected+'"';
     window.location="traitementSelection.php?fileName="+imageSelected;
 }
+function onDelete(evt){
+    var fileToDelete=evt.target.value;
+    console.log(fileToDelete);
+    window.location="delete.php?fileName="+fileToDelete;
+    
+}

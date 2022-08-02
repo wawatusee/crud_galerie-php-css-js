@@ -48,27 +48,34 @@ footer {
 body {
     font-family: sans-serif;
 }
-header,
-footer {
+header{
     text-align: center;
     border:solid lightgray 0.2px;
     border-radius: 20px;
     margin-top: 5px;
     max-width: 400px;
 }
-
+header h1{
+ display: flex;
+ justify-content: space-around;
+}
+:root{--couleurTitres:rgb(190, 119, 119);}
 h1{
     padding: 0;
     margin: 0;
     font-size: 1.6em;
-    color: rgb(190, 119, 119);
+    color: var(--couleurTitres);
 }
 h2{
-    color: rgb(190, 119, 119);
+    color: var(--couleurTitres);
     font-size: 1.2em;
 }
-h3{ color: rgb(230, 166, 177);
+h3{
+     color: rgb(230, 166, 177);
     font-size: small;
+}
+.piece{
+    color: var(--couleurTitres);;
 }
 footer {
     font-size: smaller;
@@ -78,5 +85,11 @@ footer {
     justify-content: space-around;
 }
 .debug{
-    color: orange;
+    color: var(--couleurTitres);
+}
+.debug a{
+    text-decoration:none ;
+}
+#numeroButton a{
+    color: var(--couleurTitres);
 }

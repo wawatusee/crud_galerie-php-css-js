@@ -12,9 +12,11 @@ $urlImage=$dirImages.$nomImage;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<script type="text/javascript" src="js/init.js"></script>-->
+    <script type="text/javascript" src="zoombox/jquery.js"></script>
+    <script type="text/javascript" src="zoombox/zoombox.js"></script> 
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/taquin.css">
+    <link href="zoombox/zoombox.css" rel="stylesheet" type="text/css" media="screen" />
     <title>Taquin</title>
     <?php
     //Valeurs pour ratio image dans la balise style
@@ -25,7 +27,8 @@ $urlImage=$dirImages.$nomImage;
             $ratioImage=$hauteurImage/$largeurImage;
     ?>
     <!--Déclaration de la variable qui sera employée pour l'arrière plan de chaque pièce. Attention au slash ajouté avant le nom du dossier-->
-    <style>:root{--image-taquin:url('<?php echo "../".$urlImage ?>');
+   <!--Utilisé pour le style de class piece dans taquin.css pour le background--> 
+   <style>:root{--image-taquin:url('<?php echo "../".$urlImage ?>');
                 --totalLargeur:<?php echo $sizeTaquin?>;
                 --ratioImage:<?php echo $ratioImage ?>;
             }
@@ -34,13 +37,13 @@ $urlImage=$dirImages.$nomImage;
 <body onload="taquin()">
     <div class="c1">
         <header>
-            <h1>Taquin de Raymond</h1>
+            <h1><?php echo $titrePage ?><a href="admin.php" target="_self" rel="noopener noreferrer"><img src="css/images/engrenages.png" alt="Gestion taquin"></a></h1>
         </header>
         <section id="scene">
             <div class="taquin">
                 <div class="piece"></div>
                 <div class="piece"></div>
-                <div class="piece"></div>             
+                <div class="piece"></div>       
                 <div class="piece"></div>             
                 <div class="piece"></div>             
                 <div class="piece"></div>             
@@ -57,17 +60,13 @@ $urlImage=$dirImages.$nomImage;
             </div>
         </section>
         <footer>
-        <h2>Admin</h2>
             <section id="planDeSite">
-                <nav><!--MENU-->
-                    <ul>
-                        <h3>Plan de site</h3>
-                        <li><a href="admin.php" target="_self" rel="noopener noreferrer">Gestion du taquin</a></li>
-                    </ul>
-                </nav>
                 <div class="debug">
-                    <h3>Debug</h3>
-                    <?php echo "ratio : ".$ratioImage ?>
+                     <fieldset>
+                        <legend>Debug</legend>
+                        <button><a href="images/<?php echo $nomImage; ?>" rel="zoombox[galerie]">?</a></button>
+                        <button id="numeroButton"><a  href="#" onclick=displayPiecesNumber();>1</a></button>
+                     </fieldset>
                 </div>
             </section>
         </footer>

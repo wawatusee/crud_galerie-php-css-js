@@ -6,10 +6,28 @@ Gallery with small crud with html css js json for the data files
  - on click thumb use of a zoombox to display big image
  - add a checkbox to use it as a selector backend
  - use the ratio of the background image to fill the taquin with a non square image
+ - Use video to fill the taquin(just have use a GIF, thats perfect)
+  - make an event at the issue of the taquin
+   - delete a thumb an the linked big image
+   - Create an help with a zoomBox wich show the image of the 15n puzzle
+   - Create an help service wich show the original number of each case
+   - on change the default image, go to the public page directly
 
 ## To do
- - delete a thumb an the linked big image
+ - rule errors: admin,on upload, rule imagesize error; if the default image(json)doesn't exist; if an image extension is jpeg and not jpg.
  - modify the name of a thumb and the big image linked to it
- - Use video to fill the taquin
  - build the taquin in JS instead of hard html
+
+ ## Parameters image taquin and explain
+ The aspect of each piece come from the backround image of his div, the url of that imagage come from a file json("image-taquin.json") with the property "image_taquin";
+  Read by php in index php:" $jsonImageTaquin=json_decode(file_get_contents("js/image-taquin.json"));
+                //Récupération du nom de l'image source
+                $nomImage=$jsonImageTaquin->image_taquin;
+                $urlImage=$dirImages.$nomImage;"
+
+And transformed in variable css in a style tag : "<style>:root{--image-taquin:url('<?php echo "../".$urlImage ?>');</style>"
+At end the real impact is in CSS with the use of this variable for the background of each piece:
+".piece {background: var(--image-taquin);"
+
+May be I could do everything in JS but I like the mixed CSS/JS to, thats make the reread easier.
  
