@@ -11,7 +11,7 @@
     height: calc(var(--largeurPiece)*var(--ratioImage));
     background: var(--image-taquin);
     background-color: aqua;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 6px 6px 6px 6px;
     font-size: 3em;
     text-align: center;
 }
