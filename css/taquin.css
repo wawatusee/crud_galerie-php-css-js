@@ -4,6 +4,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: solid 1px;
+    padding: 2px;
+    background-color: var(--couleurTitres);;
 }
 .piece {
     --largeurPiece:calc(var(--totalLargeur)/4);
@@ -23,6 +26,7 @@
 body {
     font-family: sans-serif;
     max-width: 98vw;
+    background-color:rgb(211,211,211);
 }
 .c1 {
     display: grid;
