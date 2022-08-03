@@ -14,6 +14,16 @@ Gallery with small crud with html css js json for the data files
    - on change the default image, go to the public page directly
 
 ## To do
+
+For Raymond
+ - Change the background to grey
+ - less corner for each piece of the taquin
+ - access to the admin with a password
+ - change the number of pieces 
+ - make a taquin with only 9 pieces
+ 
+ The other are for this site and the fork origin to
+ 
  - rule errors: admin,on upload, rule imagesize error; if the default image(json)doesn't exist; if an image extension is jpeg and not jpg.
  - modify the name of a thumb and the big image linked to it
  - build the taquin in JS instead of hard html
