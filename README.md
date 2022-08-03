@@ -12,12 +12,11 @@ Gallery with small crud with html css js json for the data files
    - Create an help with a zoomBox wich show the image of the 15n puzzle
    - Create an help service wich show the original number of each case
    - on change the default image, go to the public page directly
-
+   - less corner for each piece of the taquin
 ## To do
 
 For Raymond
  - Change the background to grey
- - less corner for each piece of the taquin
  - access to the admin with a password
  - change the number of pieces 
  - make a taquin with only 9 pieces
