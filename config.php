@@ -8,5 +8,5 @@ Valeurs à insérer:
 $dirImages="images/";
 $sizeTaquin="400px";
 $largeurMiniature="200px";
-$titrePage="Taquin de Nanard";
+$titrePage="Taquin de Raymond";
 ?>

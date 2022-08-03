@@ -4,6 +4,9 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    border: solid 1px;
+    padding: 2px;
+    background-color: var(--couleurTitres);;
 }
 .piece {
     --largeurPiece:calc(var(--totalLargeur)/4);
@@ -11,7 +14,7 @@
     height: calc(var(--largeurPiece)*var(--ratioImage));
     background: var(--image-taquin);
     background-color: aqua;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 6px 6px 6px 6px;
     font-size: 3em;
     text-align: center;
 }
@@ -23,6 +26,7 @@
 body {
     font-family: sans-serif;
     max-width: 98vw;
+    background-color:rgb(211,211,211);
 }
 .c1 {
     display: grid;
