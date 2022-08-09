@@ -9,7 +9,7 @@
     background-color: var(--couleurTitres);;
 }
 .piece {
-    --largeurPiece:calc(var(--totalLargeur)/4);
+    --largeurPiece:calc(var(--totalLargeur)/var(--nbrPiecesPerLine));
     width:var(--largeurPiece);
     height: calc(var(--largeurPiece)*var(--ratioImage));
     background: var(--image-taquin);
@@ -88,10 +88,10 @@ footer {
     display: flex;
     justify-content: space-around;
 }
-.debug{
+.help{
     color: var(--couleurTitres);
 }
-.debug a{
+.help a{
     text-decoration:none ;
 }
 #numeroButton a{
